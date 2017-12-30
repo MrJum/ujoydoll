@@ -1,0 +1,12 @@
+{
+    "repositories": {
+       "packagist": {
+          "type": "composer",
+          "url": "https://packagist.phpcomposer.com"
+       }
+   },
+   "require": {
+        "paquettg/php-html-parser": "^1.7",
+        "hashids/hashids": "^2.0"
+    }
+}

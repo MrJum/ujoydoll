@@ -1,0 +1,29 @@
+﻿# phpstorm project files
+.idea
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+*/Runtime/
+/Uploads/
+
+config.inc.php
+db.php
+
+/BackupData
+
+/Application/Common/Conf/db.php
+/Application/Common/Conf/security.php
