@@ -1,0 +1,18 @@
+@charset "utf-8";
+/***************************宽屏样式(start)***************************/
+.w_1200 #ismall{ width:1200px;}
+.w_1200 #ismall a{ width:570px;}
+.w_1200 #icase .item{ width:565px;}
+.w_1200 #icase .item .text{ width:380px;}
+/***************************宽屏样式(end)***************************/
+#ititle{ height:57px; background:url(../images/flower.png) no-repeat center bottom; margin-top:35px; text-align:center; font-size:24px; color:#000000;}
+#ismall{ width:980px; margin:0 auto; overflow:hidden;}
+#ismall a{ width:480px;}
+#icase{ border-top:1px solid #d7d7d7; height:200px; margin-bottom:15px;}
+#icase .item{ width:473px; margin:26px 0 0 10px; overflow:hidden;}
+#icase .item .cpic{ position:relative; width:162px; height:164px; float:left;}
+#icase .item .cpic .frame{ background:url(../images/frame.png) no-repeat center top; width:162px; height:164px; z-index:10; left:0px; top:0px; display:block; position:absolute;}
+#icase .item .cpic .inner{ width:153px; height:153px; margin:0 auto;}
+#icase .item .text{ float:right; width:296px;}
+#icase .item .text .t{ margin:23px 0 8px 0; font-size:14px; color:#000; font-weight:bold; display:block;}
+#icase .item .text .d{ color:#555555; font-size:14px; line-height:180%;}
