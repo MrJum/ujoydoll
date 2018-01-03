@@ -1,9 +1,8 @@
 <?php
 return array(
     'TMPL_DENY_PHP' => false,
-    'DEFAULT_MODULE' => 'Site',
+    'DEFAULT_MODULE' => 'Home',
     'LOAD_EXT_CONFIG' => 'db,security',
-    'DEFAULT_THEME'  => 'baobaostar',
     'URL_MODEL' => 1, //PATHINFO设置为1，为兼容模式
     'TMPL_TEMPLATE_SUFFIX' => '.php',
     'URL_HTML_SUFFIX'=>'html',

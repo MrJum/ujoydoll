@@ -1,5 +1,5 @@
 <?php
-namespace Site\Controller;
+namespace Home\Controller;
 
 use Common\Model\OptionsModel;
 use Think\Controller;

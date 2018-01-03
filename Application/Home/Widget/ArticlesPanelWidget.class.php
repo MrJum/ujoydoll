@@ -5,10 +5,10 @@
  * Date: 2017/11/29
  * Time: 22:02
  */
-namespace Site\Widget;
+namespace Home\Widget;
 
 use Common\Service\WordAnalysisService;
-use Site\Controller\BaseController;
+use Home\Controller\BaseController;
 
 class ArticlesPanelWidget extends BaseController {
 

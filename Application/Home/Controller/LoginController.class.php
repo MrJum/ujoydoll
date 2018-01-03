@@ -1,7 +1,7 @@
 <?php
-namespace Site\Controller;
+namespace Home\Controller;
 
-use Site\Service\CustomerService;
+use Home\Service\CustomerService;
 
 class LoginController extends BaseController {
 

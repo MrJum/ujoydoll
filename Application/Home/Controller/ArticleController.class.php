@@ -1,5 +1,5 @@
 <?php
-namespace Site\Controller;
+namespace Home\Controller;
 use Hashids\Hashids;
 
 class ArticleController extends BaseController {
