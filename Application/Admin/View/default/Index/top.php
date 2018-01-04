@@ -135,13 +135,13 @@ a:hover{
     
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color:#23262e;color:#eeeeee; ">
   <tr>
-    <td width='40%' height="65" ><span class="logo">又一个CMS网站后台系统&nbsp;</span></td>
+    <td width='40%' height="65" ><span class="logo">UJOYDOLL网站后台系统&nbsp;</span></td>
     <td width='60%' style="color:white"></td>
     <td width='20%' align="right" valign="bottom">
     	<table width="450" border="0" cellspacing="0" cellpadding="0">
       <tr>
       <td align="right" height="26" style="padding-right:10px;line-height:26px;">
-        	您好！<span class="username"><?php echo session(C("__YYG_AUTH_NAME__")) ?></span>，欢迎使用又一个CMS网站后台系统！
+        	您好！<span class="username"><?php echo session(C("__YYG_AUTH_NAME__")) ?></span>，欢迎使用UJOYDOLL网站后台系统！
         	[<a href="<?php echo admin_url("Login/logout")?>" target="_top">注销退出</a>]&nbsp;
       </td>
       </tr>
