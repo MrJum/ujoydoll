@@ -467,7 +467,7 @@ class ContentController extends BaseController {
 	public function getAttacs(){
 		$cid = I('id');
 		if(empty($cid)) return 0;
-		$arels = M("attac_rel")->where("`rel_id`='$cid'")->select();
+		$arels = M("attac_rel")->where("`rel_id`='$cid' and `type`=> 1")->select();
 		
 		$dataJsons = array();
 		$attacM = M("attac");
@@ -477,7 +477,7 @@ class ContentController extends BaseController {
 			$att_id = $ar['att_id'];
 			$attac = $attacM->find($att_id);
 			if(empty($attac)) {
-				M("attac_rel")->where("`rel_id`='$cid' and `att_id`='$att_id'")->delete();
+				M("attac_rel")->where("`rel_id`='$cid' and `att_id`='$att_id' and `type`=1")->delete();
 				continue;
 			}
 			$dataJson = array();
@@ -517,7 +517,7 @@ class ContentController extends BaseController {
 	 */
 	private function _delAttr($cid){
 		$attac_relM = M("attac_rel");
-		$attac_rels = $attac_relM->where("`rel_id`='$cid'")->select();
+		$attac_rels = $attac_relM->where("`rel_id`='$cid' and `type`=> 1")->select();
 		foreach($attac_rels as $ar){
 			$this->_doDelAttr($cid, $ar['att_id']);
 		}
@@ -536,7 +536,7 @@ class ContentController extends BaseController {
 		$attac = $attacM->find($attId);
 		delFile(__YYG_SITE_ROOT__.$attac['path']);
 		if(!empty($cid)) {
-			M("attac_rel")->where("`att_id`='$attId' and `rel_id`='$cid'")->delete();
+			M("attac_rel")->where("`att_id`='$attId' and `rel_id`='$cid' and `type`=1")->delete();
 		};
 		
 		$res = $attacM->where("`id`='$attId'")->delete();
@@ -621,13 +621,13 @@ class ContentController extends BaseController {
 			return;
 		}
 		if($mainPicId == 'null'){
-			M("attac_rel")->where(['rel_id' => $cid])->save(['ismain' => 0]);
+			M("attac_rel")->where(['rel_id' => $cid, 'type' => 1])->save(['ismain' => 0]);
 			return;
 		}
 		M("attac_rel")->startTrans();
 		try{
-			M("attac_rel")->where(['rel_id' => $cid])->save(['ismain' => 0]);
-			M("attac_rel")->where(['att_id' => $mainPicId, 'rel_id' => $cid])->save(['ismain' => 1]);
+			M("attac_rel")->where(['rel_id' => $cid, 'type' => 1])->save(['ismain' => 0]);
+			M("attac_rel")->where(['att_id' => $mainPicId, 'rel_id' => $cid, 'type' => 1])->save(['ismain' => 1]);
 			M("attac_rel")->commit();
 		}catch (\Exception $e){
 			M("attac_rel")->rollback();

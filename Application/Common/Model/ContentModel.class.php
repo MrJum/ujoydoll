@@ -33,7 +33,7 @@ class ContentModel extends RelationModel{
     
     
     public function getAttatsCount($cid){
-    	return M("attac_rel")->where("rel_id='$cid'")->count();
+    	return M("attac_rel")->where("rel_id='$cid' and `type`=1")->count();
     }
 
 	public function addTags($cid, $tags)

@@ -12,6 +12,8 @@ class CategoryController extends BaseController {
 	}
     
     public function mgr(){
+        $opt = $this->getOptions();
+        $this->assign('option', $opt);
         $this->display();
     }
 
@@ -36,7 +38,7 @@ class CategoryController extends BaseController {
                     $isAllChildNodeDisabled = false;
                 }
                 $pNode['nodes'] []= [
-                    'text' => '<span id="cate-'.$childNode['id'].'-text">'.$childNode['name'].'</span>'.
+                    'text' => '<span id="cate-'.$childNode['id'].'-text">'.$childNode['name'].$this->getCategoryImageHtml($childNode['id']).'</span>'.
                         '<input id="cate-'.$childNode['id'].'-edit" size="32"  type="text" name="cate-'.$childNode['id'].'-edit" value="'.$childNode['name'].'" style="display:none" />'.
                         '<div class="category-del-li-div">'.$editStr.'<a onclick="doDel(\''.$childNode['id'].'\', \''.$childNode['name'].'\')">删除</a>'.$enabledStr.'</div>',
                 ];
@@ -54,13 +56,30 @@ class CategoryController extends BaseController {
                 $delStr = '<a href="javascript:void(0)" onclick="doDel(\''.$parentCategory['id'].'\', \''.$parentCategory['name'].'\')">删除</a>';
             }
 
-            $pNode['text'] = '<span id="cate-'.$parentCategory['id'].'-text">'.$parentCategory['name'].'</span>'.
+            $pNode['text'] = '<span id="cate-'.$parentCategory['id'].'-text">'.$parentCategory['name'].$this->getCategoryImageHtml($parentCategory['id']).'</span>'.
                 '<input id="cate-'.$parentCategory['id'].'-edit" type="text" name="cate-'.$parentCategory['id'].'-edit" value="'.$parentCategory['name'].
                 '" style="display:none" />'.'<div class="category-del-li-div">'.$editStr.$delStr.$enabledStr.'</div>';
 
             $returnData []= $pNode;
         }
         $this->jsonReturn ($returnData);
+    }
+
+    private function getCategoryImageHtml($cateId){
+        $attRel = M('attac_rel')->where(['rel_id' => $cateId, 'type' => 2])->find();
+        if(empty($attRel)){
+            return '';
+        }
+
+        $attac = M('attac')->where(['id' => $attRel['att_id']])->find();
+        if(empty($attac)){
+            return '';
+        }
+
+        return '<a class="cate-img-link" target="_blank" href="'.$attac['path'].'" style="opacity: 1;">
+            <img src="/Public/admin/images/imgprew.png"/>
+        </a>';
+
     }
 
     public function getCategorys(){
@@ -95,14 +114,22 @@ class CategoryController extends BaseController {
             $pageCode = $categoryName;
         }
         $categoryModel = M("category"); // 实例化User对象
-        $ret = $categoryModel->data([
-            'pid' => $parentCategoryVal,
-            'name' => $categoryName,
-            'pagecode' => $pageCode,
-            'status' => 1,
-            'createtime' => date("Y-m-d H:i:s"),
-            'modifytime' => date("Y-m-d H:i:s"),
-        ])->add();
+        $categoryModel->startTrans();
+        try{
+            $ret = $categoryModel->data([
+                'pid' => $parentCategoryVal,
+                'name' => $categoryName,
+                'pagecode' => $pageCode,
+                'status' => 1,
+                'createtime' => date("Y-m-d H:i:s"),
+                'modifytime' => date("Y-m-d H:i:s"),
+            ])->add();
+            $this->addRelAttac(I('post.up_img_id'), $ret);
+            $categoryModel->commit();
+        }catch (\Exception $e){
+            $categoryModel->rollback();
+        }
+
         if($ret){
             $this->jsonReturn ($ret);
         }else{
@@ -208,6 +235,21 @@ class CategoryController extends BaseController {
             $this->jsonReturn (false, '修改名称失败');
         }
 
+    }
+
+    private function addRelAttac($attId, $categoryId)
+    {
+        if(!$categoryId || !$attId){
+            return;
+        }
+
+        $attacRelM = M("attac_rel");
+        $attacRelM->where(['type'=> 2, 'rel_id' => $categoryId])->delete();
+        $data = array();
+        $data['att_id'] = $attId;
+        $data['rel_id'] = $categoryId;
+        $data['type'] = 2;
+        $attacRelM->add($data, array(), True);
     }
 
 }

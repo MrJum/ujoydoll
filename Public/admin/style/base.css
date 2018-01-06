@@ -836,3 +836,12 @@ select option{
 .progress{
     margin-bottom: 3px;
 }
+
+.cate-img-link{
+    margin-left: 12px;
+}
+
+.cate-img-link img{
+    width:24px;
+    height:18px;
+}

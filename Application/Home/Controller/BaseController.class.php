@@ -173,7 +173,7 @@ class BaseController extends Controller {
 
 	private function getMainImg($cid)
 	{
-		$attacRel = M("attac_rel")->where(['rel_id' => $cid, 'ismain' => 1])->find();
+		$attacRel = M("attac_rel")->where(['rel_id' => $cid, 'ismain' => 1, 'type' => 1])->find();
 		if(empty($attacRel)){
 			return false;
 		}

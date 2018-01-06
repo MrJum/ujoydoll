@@ -194,7 +194,7 @@ class SpiderCi123Controller extends BaseController {
                 $contentD->addTags($content['id'], implode(',', array_merge($analysisTags, $tags)));
 
                 foreach($attacIds as $attacId){
-                    M("attac_rel")->data(['att_id' => $attacId, 'rel_id' => $cid])->add();
+                    M("attac_rel")->data(['att_id' => $attacId, 'rel_id' => $cid, `type` => 1])->add();
                 }
                 $contentD->commit();
             }catch (\Exception $e){
