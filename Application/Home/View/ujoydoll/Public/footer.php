@@ -45,7 +45,7 @@
         </div>
     </div>
     <div id="fbot" class="copyright">
-        UEESHOP © All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.ueeshop.com/" target="_blank">POWERED BY UEESHOP</a></div>
+        <?php echo $options->copyright ?></div>
 </div>
 <div align="center">
     <script type="text/javascript" src="__PUBLIC__/site/{$Think.THEME_NAME}/js/analytics.js"></script>

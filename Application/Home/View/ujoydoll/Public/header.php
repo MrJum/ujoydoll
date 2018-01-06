@@ -4,9 +4,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="keywords" content="Simle">
-    <meta name="description" content="Simle">
-    <title>Simle</title>
+    <meta name="keywords" content="<?php echo $options->keywords ?>">
+    <meta name="description" content="<?php echo $options->description ?>">
+    <title>
+
+        <?php echo $options->siteName?>
+        <?php if(isset($subSiteTitle)){
+            echo " - ".$subSiteTitle;
+        }?>
+    </title>
     <link href="__PUBLIC__/site/{$Think.THEME_NAME}/css/global.css" rel="stylesheet" type="text/css">
     <link href="__PUBLIC__/site/{$Think.THEME_NAME}/css/themes.css" rel="stylesheet" type="text/css">
     <link href="__PUBLIC__/site/{$Think.THEME_NAME}/css/user.css" rel="stylesheet" type="text/css">
@@ -20,3 +26,62 @@
     <link href="__PUBLIC__/site/{$Think.THEME_NAME}/css/index.css" rel="stylesheet" type="text/css">
 </head>
 <body class="lang_en w_1200" style="">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/site/{$Think.THEME_NAME}/css/open.css">
+
+<script type="text/javascript">
+    $(window).resize(function () {
+        $(window).webDisplay(0);
+    });
+    $(window).webDisplay(0);
+</script>
+<div class="header clean">
+    <div class="blank3"></div>
+    <div class="header_top">
+        <div class="fl">
+            <font color="#777777"><?php echo $options->seoName ?></font>
+        </div>
+        <div class="hright fr">
+            <div class="item i0">
+                <form action="http://t159.web.ueeshop.com/search/" method="get">
+                    <input type="text" name="Keyword" class="fl in_text" value="" placeholder="Search">
+                    <input type="submit" value="" class="fl in_sub">
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="w1160">
+        <h1 class="logo fl pic_box">
+            <a href="http://t159.web.ueeshop.com/">
+                <img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/d8e35dd791.png" alt="lywebsite"><em></em>
+            </a></h1>
+        <div class="clear"></div>
+    </div>
+    <div class="nav">
+        <div class="w1160">
+            <div class="i ">
+                <a href="/" class="ia">Home</a>
+            </div>
+            <div class="i down_nav">
+                <a href="http://t159.web.ueeshop.com/products/" target="_blank" class="ia">Products</a>
+                <div class="sub navigation">
+                    <div class="list">
+                        <?php foreach($products as $product){ ?>
+                            <div><a href="<?php echo '/product/'.$product['pagecode'].'.html' ?>" title="<?php echo $product['name'] ?>"><?php echo $product['name'] ?></a></div>
+                        <?php } ?>
+                    </div>
+                </div><!-- end of .sub -->
+            </div>
+            <div class="i ">
+                <a href="http://t159.web.ueeshop.com/feedback.html" target="_blank" class="ia">Feedback</a>
+            </div>
+            <div class="i ">
+                <a href="http://t159.web.ueeshop.com/art/about-us-1.html" class="ia">About Us</a>
+            </div>
+            <div class="i ">
+                <a href="http://t159.web.ueeshop.com/info/" class="ia">News</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div><!-- end of .header -->

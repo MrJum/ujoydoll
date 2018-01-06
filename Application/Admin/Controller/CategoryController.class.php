@@ -85,8 +85,12 @@ class CategoryController extends BaseController {
                 $this->jsonReturn (false, "无效的父级分类");
             }
         }
+        if(preg_match('/[\x{4e00}-\x{9fa5}]/u', $categoryName)>0){
+            $pageCode = D('Pinyin', 'Helper')->toPinyin($categoryName);
+        }else{
+            $pageCode = D('Category', 'Service')->enNameToPageCode($categoryName);
+        }
 
-        $pageCode = D('Pinyin', 'Helper')->toPinyin($categoryName);
         if(empty($pageCode)){
             $pageCode = $categoryName;
         }
@@ -186,7 +190,14 @@ class CategoryController extends BaseController {
             $this->jsonReturn (false, "已存在该名称的分类");
         }
 
+        if(preg_match('/[\x{4e00}-\x{9fa5}]/u', $name)>0){
+            $pageCode = D('Pinyin', 'Helper')->toPinyin($name);
+        }else{
+            $pageCode = D('Category', 'Service')->enNameToPageCode($name);
+        }
+
         $data['name'] = $name;
+        $data['pagecode'] = $pageCode;
         $data['modifytime'] = date('Y-m-d H:i:s');
         $ret = $categoryModel->where(['id' => $cid])->save($data);
 

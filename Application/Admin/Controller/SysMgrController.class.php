@@ -23,7 +23,7 @@ class SysMgrController extends BaseController {
         $options->set("seoName", I('seoName'));
         $options->set("copyright", I('copyright'));
         
-        $this->success('修改成功', __URL__);
+        $this->success('修改成功', C('__URL__'));
     }
     /**
      * 清除系统缓存

@@ -6,7 +6,11 @@ use Think\Controller;
 use Hashids\Hashids;
 // 本类由系统自动生成，仅供测试用途
 class BaseController extends Controller {
-	
+
+	private $_options = False;
+	private $_attac_relM = False;
+	private $_attacM = False;
+
 	public function _initialize(){
 		$this->assignOptions();
 		if(empty($this->_attac_relM)){
@@ -17,13 +21,10 @@ class BaseController extends Controller {
 		}
 		$this->flushTokenInvalidTime();
 		$this->assign('loginInfo', $this->getLoginInfo());
+		$this->assign('options', $this->getOptions());
+		$this->assign('products', D("Category", "Service")->getProductsByPname('TPE'));
 	}
 	
-    private $_options = False;
-    private $_attac_relM = False;
-    private $_attacM = False;
-    
-    
     public function getOptions(){
         if($this->_options == False){
             $options = D('Options');
