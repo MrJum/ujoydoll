@@ -199,4 +199,19 @@ class BaseController extends Controller {
 		return $thumbsPaths;
 	}
 
+	public function getRelImgs($relId, $type=1){
+		$attacRels = M("attac_rel")->where(['type' => $type, 'rel_id' => $relId])->select();
+		$attImgPaths = [];
+		if($attacRels){
+			foreach($attacRels as $attacRel){
+				$att = M("attac")->where(['id' =>$attacRel['att_id']])->find();
+				if($att){
+					$attImgPaths []= $att['path'];
+				}
+			}
+		}
+
+		return $attImgPaths;
+	}
+
 }

@@ -78,6 +78,20 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        var uhref = window.location.href;
+        var upos = uhref.lastIndexOf('#')
+        if(upos !== -1){
+            var pidx = uhref.substring(upos + 1);
+            pidx = parseInt(pidx);
+            var tarpp = $("#product-link-" + pidx).get(0);
+            if(tarpp && jQuery.type(tarpp.scrollIntoViewIfNeeded) === "function"){
+                tarpp.scrollIntoViewIfNeeded();
+            }
+        }
+    });
+</script>
 
 </body>
 </html>

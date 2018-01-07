@@ -149,7 +149,7 @@
                 'cur_category_id': tform.cur_category_id.value} , function (data, status) {
                 data = comm_parseJsonResult(data);
                 if(data){
-                    show_success_alert('成功', "新增分类成功", function () {
+                    show_success_alert('成功', "保存分类成功", function () {
                         window.location.reload();
                     });
                 }

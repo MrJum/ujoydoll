@@ -10,9 +10,9 @@
     <div class="wrap">
         <div class="leftmenu">
             <div class="t">CATEGORIES</div>
-            <?php foreach($products as $product){ ?>
+            <?php foreach($products as $idx=>$product){ ?>
                 <div class="row category_<?php echo $product['id'] ?> <?php echo $cur_product['id'] == $product['id'] ? ' on ' : " " ?>">
-                    <div class="n1 "><a href="<?php echo '/product/'.$product['pagecode'].'.html' ?>" title="<?php echo $product['name'] ?>"><?php echo $product['name'] ?></a></div>
+                    <div class="n1 "><a id="product-link-<?php echo $idx ?>" href="<?php echo '/product/'.$product['pagecode'].'.html#'.$idx ?>" title="<?php echo $product['name'] ?>"><?php echo $product['name'] ?></a></div>
                 </div>
             <?php } ?>
             <div class="blank25"></div>
@@ -104,7 +104,9 @@
                 <div class="fr">There are 17 products</div>
             </div>
             <div class="banner">
-                <div><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/2258a1c4bf.jpg" alt=""></div>
+                <?php if(!empty($cur_product['img'])){ ?>
+                    <div><img src="<?php echo $cur_product['img'] ?>" alt=""></div>
+                <?php } ?>
             </div>
             <div class="blank25"></div>
             <div id="turn_page"><span><font class="page_noclick"><em class="icon_page_prev"></em>&nbsp;</font></span><span><font class="page_item_current">1</font></span><span><a
