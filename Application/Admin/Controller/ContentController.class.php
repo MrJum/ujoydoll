@@ -263,6 +263,14 @@ class ContentController extends BaseController {
 					$admin = $this->getLoginUser();
 					$contentD->author_id = $admin['id'];
 					$contentD->editor_id = $admin['id'];
+					if(preg_match('/[\x{4e00}-\x{9fa5}]/u', $contentD->title)>0){
+						$pageCode = D('Pinyin', 'Helper')->toPinyin($contentD->title);
+					}else{
+						$pageCode = D('Content', 'Service')->enNameToPageCode($contentD->title);
+					}
+
+					$contentD->pagecode = $pageCode;
+
 					$cid = $contentD->add();
 					$stages = I('post.yuer_stage');
 					if(!empty($stages)){
@@ -343,6 +351,7 @@ class ContentController extends BaseController {
 					array_unshift($subCategorys, $category);
 				}
 			}
+
 			$this->assign('categorys', $subCategorys);
 			$this->assign('category', $category);
 			$this->assign("content", $content);
@@ -382,6 +391,14 @@ class ContentController extends BaseController {
 					}
 					$admin = $this->getLoginUser();
 					$contentD->editor_id = $admin['id'];
+					if(preg_match('/[\x{4e00}-\x{9fa5}]/u', $contentD->title)>0){
+						$pageCode = D('Pinyin', 'Helper')->toPinyin($contentD->title);
+					}else{
+						$pageCode = D('Content', 'Service')->enNameToPageCode($contentD->title);
+					}
+
+					$contentD->pagecode = $pageCode;
+					
 					$contentD->save();
 					$this->_addAttac(I("id"));
 					$this->addMainImg($cid, array_pop(explode('-', I("post.set_main_img_id"))));
@@ -467,7 +484,7 @@ class ContentController extends BaseController {
 	public function getAttacs(){
 		$cid = I('id');
 		if(empty($cid)) return 0;
-		$arels = M("attac_rel")->where("`rel_id`='$cid' and `type`=> 1")->select();
+		$arels = M("attac_rel")->where("`rel_id`='$cid' and `type`= 1")->select();
 		
 		$dataJsons = array();
 		$attacM = M("attac");

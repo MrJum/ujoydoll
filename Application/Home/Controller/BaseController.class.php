@@ -22,7 +22,7 @@ class BaseController extends Controller {
 		$this->flushTokenInvalidTime();
 		$this->assign('loginInfo', $this->getLoginInfo());
 		$this->assign('options', $this->getOptions());
-		$this->assign('products', D("Category", "Service")->getProductsByPname('TPE'));
+		$this->assign('categorys', D("Category", "Service")->getProductsByPname('TPE'));
 	}
 	
     public function getOptions(){
@@ -159,12 +159,12 @@ class BaseController extends Controller {
 		return $avatarurl.'?t='.time();
 	}
 
-	protected function makeArticlesCanDisplay($articles){
+	protected function makeArticlesCanDisplay($articles, $category){
 		$newArticles = [];
 		$hashids = new Hashids();
 
 		foreach($articles as $article){
-			$article['link_url'] = site_url('/article/view/id/'.$hashids->encode($article['id']));
+			$article['link_url'] = site_url('/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html');
 			$article['main_img'] = $this->getMainImg($article['id']);
 			$newArticles []= $article;
 		}
@@ -174,6 +174,10 @@ class BaseController extends Controller {
 	private function getMainImg($cid)
 	{
 		$attacRel = M("attac_rel")->where(['rel_id' => $cid, 'ismain' => 1, 'type' => 1])->find();
+		if(empty($attacRel)){
+			$attacRel = M("attac_rel")->where(['rel_id' => $cid, 'type' => 1])->order('`att_id` desc')->find();
+		}
+
 		if(empty($attacRel)){
 			return false;
 		}

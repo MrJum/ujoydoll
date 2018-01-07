@@ -24,13 +24,13 @@
 
                             </tr>
                             <tr >
-                                <td class="head "><span class="yyg-required">*</span>内容： </td>
-                                <td class="tail" colspan="2"> <textarea name="content" style='width:90%' rows="40" id="yyg_content"></textarea></td>
+                                <td class="head "><span class="yyg-required">*</span>简介： </td>
+                                <td class="tail" colspan="2"> <textarea name="intro" style='width:90%;margin-top: 3px;margin-bottom: 3px;' rows="20" id="yyg_intro"></textarea>
+                                    <span class="info"></span></td>
                             </tr>
                             <tr >
-                                <td class="head "><span class="yyg-required">*</span>导读： </td>
-                                <td class="tail" colspan="2"> <textarea name="intro" style='width:90%;margin-top: 3px;margin-bottom: 3px;' rows="4" id="yyg_intro"></textarea>
-                                    <span class="info">文章的导读，文章的简介，内容摘要</span></td>
+                                <td class="head "><span class="yyg-required">*</span>内容： </td>
+                                <td class="tail" colspan="2"> <textarea name="content" style='width:90%' rows="40" id="yyg_content"></textarea></td>
                             </tr>
                             <tr >
                                 <td class="head "><span class="yyg-required">*</span>分类： </td>
@@ -42,17 +42,6 @@
 `                                    </select>
                                 </td>
 
-                            </tr>
-                            <tr >
-                                <td class="head">育儿阶段：</td>
-                                <td class="tail" colspan="2">
-                                    <volist name="stages" id="sitem">
-                                    <label class="checkbox-inline" style="margin-right: 6px;">
-                                        <input type="checkbox" name="yuer_stage[]" value="{$sitem}">
-                                            {$sitem}
-                                    </label>
-                                    </volist>
-                                </td>
                             </tr>
                             <tr >
                                 <td class="head">标签：</td>
@@ -147,6 +136,28 @@
     var editor;
     KindEditor.ready(function(K) {
         editor = K.create('#yyg_content', {
+            resizeType : 1,
+            allowPreviewEmoticons : false,
+            allowImageUpload : false,
+            allowFlashUpload : false,
+            allowMediaUpload : false,
+            pasteType : 2,
+            items : [
+                'source', '|', 'undo', 'redo', '|', 'cut', 'copy', 'paste',
+                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+                'flash', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                'anchor', 'link', 'unlink'
+            ]
+        });
+    });
+
+    var editor2;
+    KindEditor.ready(function(K) {
+        editor2 = K.create('#yyg_intro', {
             resizeType : 1,
             allowPreviewEmoticons : false,
             allowImageUpload : false,

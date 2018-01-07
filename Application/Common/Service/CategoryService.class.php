@@ -9,15 +9,11 @@
 namespace Common\Service;
 
 
-class CategoryService
+class CategoryService  extends BaseService
 {
     public function getProductsByPname($pname){
         $pProduct = M("category")->where(["status" => 1, "name" => $pname])->find();
         return M("category")->where(["status" => 1, "pid" => $pProduct['id']])->select();
-    }
-
-    public function enNameToPageCode($ename){
-        return strtolower(preg_replace('/[^0-9a-zA-Z_]+/', '-', $ename));
     }
 
 }

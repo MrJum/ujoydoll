@@ -4,8 +4,8 @@
 .w_1200 .nav .i > a{padding:14px 20px 14px 60px;}
 .w_1200 .rightside{width:860px;}
 .w_1200 .w1160{width:1160px;}
-.w_1200 .product_list .item{ width:270px; margin-right:40px;}
-.w_1200 .product_list .item .inner .pic{ width:269px; margin:0 auto; height:356px;}
+.w_1200 .product_list .item{ width:260px; margin-right:40px;}
+.w_1200 .product_list .item .inner .pic{ width:269px; margin:0 auto; height:266px;}
 .w_1200 .product_list .item.case{ height:294px;}
 .w_1200 #pdetail .info{ width:515px;}
 .w_1200 .header_top{ width:1160px;}
@@ -170,3 +170,7 @@ input.form_button{ width:120px; height:32px; text-align:center; background-color
 #feat .row .tx{ float:right; width:150px;}
 #feat .row .tx a{ font-size:14px; color:#333333; margin:8px 0; display:block;}
 #feat .row .tx span{ font-size:18px; color:#ff4670;}
+
+.pic .delay a img{
+    width: 339px;
+}

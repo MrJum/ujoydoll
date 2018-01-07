@@ -4,22 +4,23 @@
     <div id="webpath">
         <div class="wrap">
             <img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/home.png" onclick="window.location=&#39;/&#39;">
-            <a href="http://t159.web.ueeshop.com/products/index.html">PRODUCTS</a>
-            <a href="<?php echo '/product/'.$product['pagecode'].'.html' ?>"><?php echo $cur_product['name'] ?></a></div>
+            <a href="<?php echo '/product/all.html' ?>">PRODUCTS</a>
+            <a href="<?php echo '/product/'.$cur_category['pagecode'].'.html' ?>"><?php echo $cur_category['name'] ?></a></div>
     </div>
     <div class="wrap">
         <div class="leftmenu">
             <div class="t">CATEGORIES</div>
-            <?php foreach($products as $idx=>$product){ ?>
-                <div class="row category_<?php echo $product['id'] ?> <?php echo $cur_product['id'] == $product['id'] ? ' on ' : " " ?>">
-                    <div class="n1 "><a id="product-link-<?php echo $idx ?>" href="<?php echo '/product/'.$product['pagecode'].'.html#'.$idx ?>" title="<?php echo $product['name'] ?>"><?php echo $product['name'] ?></a></div>
+            <?php foreach($categorys as $idx=>$category){ ?>
+                <div class="row category_<?php echo $category['id'] ?> <?php echo $cur_category['id'] == $category['id'] ? ' on ' : " " ?>">
+                    <div class="n1 "><a id="product-link-<?php echo $idx ?>" href="<?php echo '/product/'.$category['pagecode'].'.html#'.$idx ?>" title="<?php echo $category['name'] ?>"><?php echo $category['name'] ?></a></div>
                 </div>
             <?php } ?>
             <div class="blank25"></div>
             <div style="overflow:hidden;">
                 <script type="text/javascript" src="__PUBLIC__/site/{$Think.THEME_NAME}/js/jQuery.blockUI.js"></script>
                 <script type="text/javascript" src="__PUBLIC__/site/{$Think.THEME_NAME}/js/jquery.SuperSlide.js"></script>
-                <style type="text/css">    .slideBox_4 {
+                <style type="text/css">
+                    .slideBox_4 {
                         overflow: hidden;
                         position: relative;
                         text-align: center;
@@ -100,12 +101,12 @@
         </div><!-- end of .leftmenu -->
         <div class="rightside fr">
             <div id="curpath">
-                <div class="fl"><?php echo $cur_product['name'] ?></div>
-                <div class="fr">There are 17 products</div>
+                <div class="fl"><?php echo $cur_category['name'] ?></div>
+                <div class="fr">There are <?php echo count($products); ?> dolls</div>
             </div>
             <div class="banner">
-                <?php if(!empty($cur_product['img'])){ ?>
-                    <div><img src="<?php echo $cur_product['img'] ?>" alt=""></div>
+                <?php if(!empty($cur_category['img'])){ ?>
+                    <div><img src="<?php echo $cur_category['img'] ?>" alt=""></div>
                 <?php } ?>
             </div>
             <div class="blank25"></div>
@@ -114,140 +115,21 @@
                         href="http://t159.web.ueeshop.com/c/wedding-dresses_0005/2.html" class="page_button">&nbsp;<em class="icon_page_next"></em></a></span></div>
             <div class="blank25"></div>
             <div class="product_list">
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/sweetheart-floor-length-chiffon-bridesmaids-dresses-p00102p1.html"
-                                                  title="Sweetheart Floor-length Chiffon Bridesmaids Dresses"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/277560a66c.jpg.500x500.jpg"><span></span></a>
-                        </div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/sweetheart-floor-length-chiffon-bridesmaids-dresses-p00102p1.html"
-                                             title="Sweetheart Floor-length Chiffon Bridesmaids Dresses">Sweetheart Floor-length Chiffon Bridesmaids Dresses</a></div>
-                    </div>
-                </div>
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00128p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/3afb082bf5.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00128p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
+                <?php foreach($products as $product) {?>
+                    <div class="item fl i_mar mri">
+                        <div class="inner">
+                            <div class="pic delay"><a href="<?php echo $product['link_url'] ?>"
+                                                      title="<?php echo $product['title'] ?>">
+                                    <img src="<?php echo $product['main_img']['path'] ?>"><span></span></a>
+                            </div>
+                            <div class="blank9"></div>
+                            <div class="name"><a href="<?php echo $product['link_url'] ?>"
+                                                 title="<?php echo $product['title'] ?>"><?php echo $product['title'] ?></a></div>
                         </div>
                     </div>
-                </div>
-                <div class="item fl i_mar no_mar">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00108p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/e86d92716b.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00108p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00107p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/62d55aca33.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00107p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00106p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/66a4c92f2a.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00106p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item fl i_mar no_mar">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00105p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/24f9a55ad5.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00105p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00103p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress."><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/fb3fdf3fa6.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00103p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress.">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress.</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00023p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/af71e22d7b.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00023p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item fl i_mar no_mar">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00022p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/cba1b7dbfb.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00022p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00016p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/38345f3735.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00016p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item fl i_mar mri">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00014p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/5fa770b07e.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00014p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item fl i_mar no_mar">
-                    <div class="inner">
-                        <div class="pic delay"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00013p1.html"
-                                                  title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img
-                                    src="__PUBLIC__/site/{$Think.THEME_NAME}/images/7f432e30a6.jpg.500x500.jpg"><span></span></a></div>
-                        <div class="blank9"></div>
-                        <div class="name"><a href="http://t159.web.ueeshop.com/one-shoulder-sleeveless-ankle-length-satin-bridesmaid-dress-p00013p1.html"
-                                             title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                }
+                ?>
                 <div class="clear"></div>
             </div>
             <div class="blank20"></div>

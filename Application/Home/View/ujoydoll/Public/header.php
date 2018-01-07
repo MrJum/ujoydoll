@@ -66,8 +66,8 @@
                 <a href="http://t159.web.ueeshop.com/products/" target="_blank" class="ia">Products</a>
                 <div class="sub navigation">
                     <div class="list">
-                        <?php foreach($products as $idx=>$product){ ?>
-                            <div><a href="<?php echo '/product/'.$product['pagecode'].'.html#'.$idx ?>" title="<?php echo $product['name'] ?>"><?php echo $product['name'] ?></a></div>
+                        <?php foreach($categorys as $idx=>$category){ ?>
+                            <div><a href="<?php echo '/product/'.$category['pagecode'].'.html#'.$idx ?>" title="<?php echo $category['name'] ?>"><?php echo $category['name'] ?></a></div>
                         <?php } ?>
                     </div>
                 </div><!-- end of .sub -->

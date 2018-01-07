@@ -2,8 +2,10 @@
 namespace Home\Controller;
 
 class ProductController extends BaseController {
-	
-    public function index($code=''){
+
+    const PAGE_SIZE = 2;
+
+    public function index($code='', $pageno=1){
         $curCategory = M("category")->where(['pagecode' => $code])->find();
         $imgs = $this->getRelImgs($curCategory['id'], 2);
         if(empty($imgs)){
@@ -11,7 +13,10 @@ class ProductController extends BaseController {
         }else{
             $curCategory['img'] = $imgs[0];
         }
-        $this->assign('cur_product', $curCategory);
+
+        $products = D("content")->where(['category_id' => $curCategory['id'], 'status' => 1])->order("topnum desc, `order`,`createtime` desc")->select();
+        $this->assign('products', $this->makeArticlesCanDisplay($products, $curCategory));
+        $this->assign('cur_category', $curCategory);
     	$this->display();
     }
     
