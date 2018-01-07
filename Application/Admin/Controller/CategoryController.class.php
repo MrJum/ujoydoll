@@ -87,8 +87,20 @@ class CategoryController extends BaseController {
         $categorys = M("category")->where("pid=".$pid."")->field("id, name")->select();
         $this->jsonReturn ($categorys);
     }
+
+    public function getCategory(){
+        $cid = I("get.cid");
+        $category = M("category")->where("id=".$cid."")->field("id, name, pid")->find();
+        if($category && !empty($category['pid'])){
+            $category['pcategory'] = M("category")->where("id=".$category['pid']."")->field("id, name")->find();
+        }else{
+            $category['pcategory'] = null;
+        }
+        $categorys = M("category")->where("pid=0")->field("id, name")->select();
+        $this->jsonReturn (['curcategory' => $category, 'pcategorys' => $categorys]);
+    }
     
-    public function addcategory(){
+    public function savecategory(){
         $categoryName = I('post.category_name');
         if(empty($categoryName)){
             $this->jsonReturn (false, '分类名称不能为空');
@@ -114,26 +126,46 @@ class CategoryController extends BaseController {
             $pageCode = $categoryName;
         }
         $categoryModel = M("category"); // 实例化User对象
+        $curCategoryId = I('post.cur_category_id');
+        $isAdd = false;
+        if(empty($curCategoryId)){
+            $isAdd = true;
+        }else{
+            $curCategory = $categoryModel->where(['id' => $curCategoryId])->find();
+            if(empty($curCategory)){
+                $isAdd = true;
+            }
+        }
+
         $categoryModel->startTrans();
         try{
-            $ret = $categoryModel->data([
-                'pid' => $parentCategoryVal,
-                'name' => $categoryName,
-                'pagecode' => $pageCode,
-                'status' => 1,
-                'createtime' => date("Y-m-d H:i:s"),
-                'modifytime' => date("Y-m-d H:i:s"),
-            ])->add();
-            $this->addRelAttac(I('post.up_img_id'), $ret);
+            if($isAdd){
+                $curCategoryId = $categoryModel->data([
+                    'pid' => $parentCategoryVal,
+                    'name' => $categoryName,
+                    'pagecode' => $pageCode,
+                    'status' => 1,
+                    'createtime' => date("Y-m-d H:i:s"),
+                    'modifytime' => date("Y-m-d H:i:s"),
+                ])->add();
+            }else{
+                $ret = $categoryModel->where(['id' => $curCategoryId])->save([
+                    'name' => $categoryName,
+                    'pagecode' => $pageCode,
+                    'modifytime' => date("Y-m-d H:i:s"),
+                ]);
+            }
+
+            $this->addRelAttac(I('post.up_img_id'), $curCategoryId);
             $categoryModel->commit();
         }catch (\Exception $e){
             $categoryModel->rollback();
         }
 
-        if($ret){
-            $this->jsonReturn ($ret);
+        if($curCategoryId){
+            $this->jsonReturn ($curCategoryId);
         }else{
-            $this->jsonReturn (false, '新增失败');
+            $this->jsonReturn (false, '保持失败');
         }
 
     }

@@ -51,7 +51,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">新增分类</h4>
             </div>
-            <form id="add-category-form" method="POST" name="add-category-form" action="__URL__/addcategory" onsubmit="return submit_check(this)">
+            <form id="add-category-form" method="POST" name="add-category-form" action="__URL__/savecategory" onsubmit="return submit_check(this)">
+                <input type="hidden" id="cur_category_id" name="cur_category_id" value="">
             <div class="modal-body">
                 <div class="alert alert-danger" role="alert" id="add-category-form-alert" style="display:none"></div>
                     <div class="form-group">
@@ -125,6 +126,10 @@
         });
         
         function open_add_dialog() {
+            $('#cur_category_id').val('');
+            $('#category_name').val('');
+            $("#parent_category").empty();
+            $("#parent_category").attr('disabled', false);
             $.get('__URL__/getCategorys?pid=0', function(data,status){
                 var cates = comm_parseJsonResult(data);
                 $("#parent_category").empty();
@@ -140,7 +145,8 @@
                 $("#add-category-form-alert").text("分类名称不能为空").show();
                 return false;
             }
-            $.post(tform.action, {'category_name' : tform.category_name.value, 'parent_category' : tform.parent_category.value, 'up_img_id': tform.yyg_uploadImg_id.value} , function (data, status) {
+            $.post(tform.action, {'category_name' : tform.category_name.value, 'parent_category' : tform.parent_category.value, 'up_img_id': tform.yyg_uploadImg_id.value,
+                'cur_category_id': tform.cur_category_id.value} , function (data, status) {
                 data = comm_parseJsonResult(data);
                 if(data){
                     show_success_alert('成功', "新增分类成功", function () {
@@ -186,13 +192,25 @@
         function doEdit(cid) {
             var e = getEvent();
             e.stopPropagation();
-            $.get('__URL__/getCategorys?pid=0', function(data, status){
-                var cates = comm_parseJsonResult(data);
+            $("#parent_category").attr('disabled', false);
+            $.get('__URL__/getCategory?cid=' + cid, function(data, status){
+                var category = comm_parseJsonResult(data);
                 $("#parent_category").empty();
-                $("#parent_category").append('<option value="0">无分类</option>');
-                $(cates).each(function(it){
-                    $("#parent_category").append('<option value="'+cates[it]['id']+'">' + cates[it]['name'] + '</option>');
+                if(category['curcategory']['pcategory'] == null){
+                    $("#parent_category").append('<option value="0" selected>无分类</option>');
+                }else{
+                    $("#parent_category").append('<option value="0">无分类</option>');
+                }
+                $(category['pcategorys']).each(function(it){
+                    if(category['curcategory']['pcategory'] != null && category['curcategory']['pcategory']['id'] == category['pcategorys'][it]['id'] ){
+                        $("#parent_category").append('<option value="' + category['pcategorys'][it]['id']+'" selected>' + category['pcategorys'][it]['name'] + '</option>');
+                    }else{
+                        $("#parent_category").append('<option value="' + category['pcategorys'][it]['id']+'">' + category['pcategorys'][it]['name'] + '</option>');
+                    }
                 });
+                $("#parent_category").attr('disabled', true);
+                $("#category_name").val(category['curcategory']['name']);
+                $("#cur_category_id").val(category['curcategory']['id']);
                 $('#myModal').modal({});
             });
 
