@@ -534,7 +534,7 @@ class ContentController extends BaseController {
 	 */
 	private function _delAttr($cid){
 		$attac_relM = M("attac_rel");
-		$attac_rels = $attac_relM->where("`rel_id`='$cid' and `type`=> 1")->select();
+		$attac_rels = $attac_relM->where("`rel_id`='$cid' and `type`= 1")->select();
 		foreach($attac_rels as $ar){
 			$this->_doDelAttr($cid, $ar['att_id']);
 		}

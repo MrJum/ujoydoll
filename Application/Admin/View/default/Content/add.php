@@ -1,6 +1,6 @@
 <include file="Public:header" />
 <script type="text/javascript" language="javascript" src="__PUBLIC__/admin/js/ejs/ejs.min.js"></script>
-<div style="min-width:780px;height:1440px;">
+<div style="min-width:780px;height:1640px;">
     <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6DDD6" align="center">
         <tr>
             <td height="28" background="__PUBLIC__/admin/images/tbg.gif" style="padding-left:10px;">
@@ -110,12 +110,13 @@
 <script src="https://cdn.bootcss.com/blueimp-file-upload/9.19.2/js/jquery.iframe-transport.js"></script>
 <script src="https://cdn.bootcss.com/blueimp-file-upload/9.19.2/js/jquery.fileupload.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/admin/js/imgpreview.min.jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/yyg-post.js"></script>
 <script id="ejs-img-div" type="text/template">
     <div class="img-div-item">
         <a class="img-link" target="_blank" href="<%= jsondata.path %>">
             <%= jsondata.name %>
         </a>
-        <a href="javascript:void(0)" class="img-del" onclick="deleteUpImg(this, '<%= jsondata.id %>')">
+        <a href="javascript:void(0)" class="img-del" onclick="yygPost.deleteUpImg(this, '<%= jsondata.id %>')">
             <img src="__PUBLIC__/admin/images/remove.png" border="none">
         </a>
         <div class="btn-xs pull-right">
@@ -126,123 +127,19 @@
                 <% }) %>
                 <option value="0">原图</option>
             </select>
-            &nbsp;<label style="font-weight: normal"><input id="main-img-checkbox-<%= jsondata.id %>" type="checkbox" class="set-main-img-checkbox" <% if(jsondata.ismain=='1'){%>checked <%}%> onclick="selectMainPic(this)">主图</label>
-            &nbsp;<a href="javascript:void(0)" onclick="addToContent('<%= jsondata.path%>', '<%= jsondata.name%>', this, '<%= jsondata.thumb.prefix %>')"
+            &nbsp;<label style="font-weight: normal"><input id="main-img-checkbox-<%= jsondata.id %>" type="checkbox" class="set-main-img-checkbox" <% if(jsondata.ismain=='1'){%>checked <%}%> onclick="yygPost.selectMainPic(this)">主图</label>
+            &nbsp;<a href="javascript:void(0)" onclick="yygPost.addToContent('<%= jsondata.path%>', '<%= jsondata.name%>', this, '<%= jsondata.thumb.prefix %>')"
                      class="btn btn-primary btn-xs" style="color:#fff;">插入</a>
         </div>
     </div>
 </script>
 <script type="text/javascript">
-    var editor;
-    KindEditor.ready(function(K) {
-        editor = K.create('#yyg_content', {
-            resizeType : 1,
-            allowPreviewEmoticons : false,
-            allowImageUpload : false,
-            allowFlashUpload : false,
-            allowMediaUpload : false,
-            pasteType : 2,
-            items : [
-                'source', '|', 'undo', 'redo', '|', 'cut', 'copy', 'paste',
-                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
-                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
-                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
-                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
-                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
-                'flash', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
-                'anchor', 'link', 'unlink'
-            ]
-        });
+    var yygPost = new YygPost({
+        del_attac_url : '__URL__/delAttr'
     });
-
-    var editor2;
-    KindEditor.ready(function(K) {
-        editor2 = K.create('#yyg_intro', {
-            resizeType : 1,
-            allowPreviewEmoticons : false,
-            allowImageUpload : false,
-            allowFlashUpload : false,
-            allowMediaUpload : false,
-            pasteType : 2,
-            items : [
-                'source', '|', 'undo', 'redo', '|', 'cut', 'copy', 'paste',
-                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
-                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
-                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
-                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
-                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
-                'flash', 'media', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
-                'anchor', 'link', 'unlink'
-            ]
-        });
-    });
-
     $(function(){
-        $('#yyg_uploadImg').fileupload({
-            url: "__URL__/upload",
-            dataType: 'json',
-            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-            maxFileSize: <?php echo $option->maxImgSize?>,
-            maxNumberOfFiles: 8,
-            formData:{},
-            done: function (e, data) {
-                var jsondata = data.result;
-                try{
-                    jsondata = comm_parseJsonResult(jsondata);
-                }catch(ee){}
-                renderImgList(jsondata);
-            },
-            progressall: function (e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#progress .progress-bar').css(
-                    'width',
-                    progress + '%'
-                );
-            }
-        }).prop('disabled', !$.support.fileInput)
-            .parent().addClass($.support.fileInput ? undefined : 'disabled');
+        yygPost.initFileUpload(<?php echo $option->maxImgSize?>, "__URL__/upload")
     });
-
-    function renderImgList(jsondata){
-        var ejsImgDiv = document.getElementById('ejs-img-div').innerHTML;
-        var imghtml = ejs.render(ejsImgDiv, { jsondata:jsondata });
-        $("#update_img_list").prepend(imghtml);
-        $("#yyg_uploadImg_ids").val($("#yyg_uploadImg_ids").val() + "," + jsondata['id']);
-        renderImgLink();
-    }
-
-    function deleteUpImg(o, attId){
-        var args = {
-            "id":attId,
-        };
-        $.post('__URL__/delAttr',args,function(data){
-            if(data == 1){
-                $(o).parent().remove();
-            }else{
-                alert(data);
-            }
-        });
-    }
-
-    function selectMainPic(thiz){
-        var mainImgCheckboxs = $(".set-main-img-checkbox");
-        var checked = $(thiz).is(':checked');
-        if(!checked){
-            $("#set_main_img_id").val("null");
-        }else{
-            $("#set_main_img_id").val($("#set_main_img_id").val() + "," + thiz.id);
-        }
-
-        mainImgCheckboxs.each(function(i, o){
-            if(checked){
-                if(o.id !== thiz.id){
-                    $(o).attr('checked', false);
-                }
-            }
-        });
-    }
-
-
 </script>
 <include file="Public:footer" />
 
