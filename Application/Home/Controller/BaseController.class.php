@@ -161,7 +161,6 @@ class BaseController extends Controller {
 
 	protected function makeArticlesCanDisplay($articles, $category){
 		$newArticles = [];
-		$hashids = new Hashids();
 
 		foreach($articles as $article){
 			$article['link_url'] = site_url('/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html');
@@ -170,6 +169,13 @@ class BaseController extends Controller {
 		}
 		return $newArticles;
 	}
+
+	protected function makeArticleCanDisplay($article, $category){
+		$article['link_url'] = site_url('/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html');
+		$article['main_img'] = $this->getMainImg($article['id']);
+		return $article;
+	}
+
 
 	private function getMainImg($cid)
 	{

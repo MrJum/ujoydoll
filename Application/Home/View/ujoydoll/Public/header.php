@@ -42,8 +42,8 @@
         </div>
         <div class="hright fr">
             <div class="item i0">
-                <form action="http://t159.web.ueeshop.com/search/" method="get">
-                    <input type="text" name="Keyword" class="fl in_text" value="" placeholder="Search">
+                <form action="<?php echo '/product/search.html' ?>" method="get">
+                    <input type="text" name="keyword" class="fl in_text" value="" placeholder="Search">
                     <input type="submit" value="" class="fl in_sub">
                 </form>
             </div>
