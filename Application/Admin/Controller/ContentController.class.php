@@ -374,6 +374,7 @@ class ContentController extends BaseController {
 				$contentD->rollback();
 				exit();
 			}else{
+
 				try{
 					$selCategoryId = I('post.category');
 					if(empty($selCategoryId)){

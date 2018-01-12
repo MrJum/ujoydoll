@@ -52,7 +52,7 @@
     </div>
     <div class="w1160">
         <h1 class="logo fl pic_box">
-            <a href="http://t159.web.ueeshop.com/">
+            <a href="/">
                 <img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/d8e35dd791.png" alt="lywebsite"><em></em>
             </a></h1>
         <div class="clear"></div>
@@ -63,7 +63,7 @@
                 <a href="/" class="ia">Home</a>
             </div>
             <div class="i down_nav">
-                <a href="http://t159.web.ueeshop.com/products/" target="_blank" class="ia">Products</a>
+                <a href="/product/all.html" class="ia">Products</a>
                 <div class="sub navigation">
                     <div class="list">
                         <?php foreach($categorys as $idx=>$category){ ?>
@@ -76,7 +76,7 @@
                 <a href="http://t159.web.ueeshop.com/feedback.html" target="_blank" class="ia">Feedback</a>
             </div>
             <div class="i ">
-                <a href="http://t159.web.ueeshop.com/art/about-us-1.html" class="ia">About Us</a>
+                <a href="/aboutus.html" class="ia">About Us</a>
             </div>
             <div class="i ">
                 <a href="http://t159.web.ueeshop.com/info/" class="ia">News</a>
