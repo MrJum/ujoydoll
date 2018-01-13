@@ -442,6 +442,7 @@ function build_count_rand ($number,$length=4,$mode=1) {
 }
 
 function remove_xss($val) {
+	$val = trim($val);
 	// remove all non-printable characters. CR(0a) and LF(0b) and TAB(9) are allowed
 	// this prevents some character re-spacing such as <java\0script>
 	// note that you have to handle splits with \n, \r, and \t later since they *are* allowed in some inputs

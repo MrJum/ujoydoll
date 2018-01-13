@@ -1,12 +1,7 @@
 <include file="Public:header"/>
 <div id="main">
     <div class="blank25"></div>
-    <div id="webpath">
-        <div class="wrap">
-            <img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/home.png" onclick="window.location=&#39;/&#39;">
-            <a href="/aboutus.html">ABOUT US</a>
-        </div>
-    </div>
+    <include file="Public:webpath"/>
     <div class="wrap">
         <div class="leftmenu">
             <div class="t">About Us</div>

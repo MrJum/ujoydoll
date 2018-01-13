@@ -15,5 +15,5 @@ class IndexController extends BaseController {
         $this->assign('aboutus', $this->makeArticleCanDisplay($aboutusContent, $aboutusCategory));
         $this->display("Aboutus:aboutus");
     }
-    
+
 }

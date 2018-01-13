@@ -73,7 +73,7 @@
                 </div><!-- end of .sub -->
             </div>
             <div class="i ">
-                <a href="http://t159.web.ueeshop.com/feedback.html" target="_blank" class="ia">Feedback</a>
+                <a href="/feedback.html" class="ia">Feedback</a>
             </div>
             <div class="i ">
                 <a href="/aboutus.html" class="ia">About Us</a>

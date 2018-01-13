@@ -130,15 +130,15 @@ $(function(){
 			}
 		}
 		$(this).find('input:submit').attr('disabled', 'disabled');
-		
-		$.post('?do_action=action.submit_feedback', $(this).serialize(), function(data){
+		$.post('', $(this).serialize(), function(data){
 			$('#lib_feedback_form form[name=feedback] input:submit').removeAttr('disabled');
-			global_obj.win_alert(data.msg);
-			if(data.status==1){
+			if(data.errCode==0){
+				global_obj.win_alert(data.data);
 				$('#lib_feedback_form input[type=text]').val('');
 				$('#lib_feedback_form textarea').val('');
 				$('#lib_feedback_form .rows span img').click();
-			}else if(data.status==-1){
+			}else if(data.errCode==-1){
+				global_obj.win_alert(data.errMsg);
 				$('#lib_feedback_form input[name=VCode]').css('border', '1px solid red').val('').focus().siblings('img').click();
 			}else if(data.status==-2){
 				
