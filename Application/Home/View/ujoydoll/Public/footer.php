@@ -74,6 +74,7 @@
                 <input type="hidden" name="float" value="207889f7a5631606ee1d21e96a5d09d7">
                 <input type="submit" class="send" value="Send" style=" background:#FE456F;">
                 <input type="hidden" name="Site" value="en">
+                <input type="hidden" name="type" value="message">
             </div>
         </form>
     </div>

@@ -29,6 +29,8 @@ class FeedbackController extends BaseController {
 			}
 		}
 
+		$o_type = I('o_type');
+
 		if($startdate === ''){
 			$startdate = I("get.startdate");
 		}
@@ -42,6 +44,10 @@ class FeedbackController extends BaseController {
 
 		if($o_status !== ''){
 			$map['status']  = array('eq', $o_status);
+		}
+
+		if($o_type !== ''){
+			$map['type']  = array('eq', $o_type);
 		}
 
 		if($startdate !== '' && $enddate === ''){
@@ -73,6 +79,7 @@ class FeedbackController extends BaseController {
 			'code' => urlencode($pageCode),
 			'o_keyword' => $o_keyword,
 			'o_status' => $o_status,
+			'o_type' => $o_type,
 			'startdate' => $startdate,
 			'enddate' => $enddate
 		];
@@ -90,6 +97,7 @@ class FeedbackController extends BaseController {
 		$this->assign('list', $commentList);// 赋值数据集
 		$this->assign('sort', $sort);
 		$this->assign('o_status', $o_status);
+		$this->assign('o_type', $o_type);
 		$this->assign('o_keyword', $o_keyword);
 		$this->assign('startdate', $startdate);
 		$this->assign('enddate', $enddate);

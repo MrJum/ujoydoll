@@ -24,14 +24,14 @@
                         </tr>
                         <tr align="center" bgcolor="#23262e" height="25" class="tr-head">
                             <td height="24" width="3%">选择</td>
-                            <td width="10%" align="left">Company</td>
-                            <td width="10%" align="left">Phone</td>
-                            <td width="10%" align="left">Email</td>
+                            <td width="8%" align="left">Name</td>
+                            <td width="8%" align="left">Company</td>
+                            <td width="8%" align="left">Phone</td>
+                            <td width="8%" align="left">Email</td>
                             <td width="10%" align="left">Subject</td>
-                            <td width="20%" align="left">Message</td>
+                            <td width="30%" align="left">Message/Question</td>
+                            <td width="8%" align="center">类型</td>
                             <td width="10%"><a href="javascript:void(0)" title="点击排序" onclick="sortContent('{$sort}')">创建时间</a>  </td>
-                            <td width="8%" nowrap="nowrap">状态</td>
-                            <td width="8%" nowrap="nowrap">操作</td>
                         </tr>
 
                         <volist name="list" id="item">
@@ -40,7 +40,10 @@
                                     <input type="checkbox" name="ids[]" value="{$item.id}" class="np">
                                 </td>
                                 <td align="left">
-                                    <div class="comment-brief-popover" href="javascript:void(0)" data-content="{$item.company}" data-placement="auto" data-width="80%">{$item.company}</div>
+                                    {$item.name}
+                                </td>
+                                <td align="left">
+                                    {$item.company}
                                 </td>
                                 <td align="left">
                                     {$item.phone}
@@ -54,25 +57,17 @@
                                 <td align="left">
                                     {$item.message}
                                 </td>
+                                <td align="center">
+                                    <?php
+                                    if($item['type'] == 1){
+                                        echo 'Feedback';
+                                    }else{
+                                        echo 'Message';
+                                    }
+                                    ?>
+                                </td>
                                 <td>
                                     {$item.createtime}
-                                </td>
-                                <td>
-                                    <if condition="($item.status eq 1) ">
-                                        <span  style="color:green;">发布 </span>
-                                        <else /><span style="color:red;">屏蔽</span>
-                                    </if>
-                                    <if condition="($item.audit neq '')">(<span style="color:#222;overflow: hidden;cursor: pointer" title="{$item.audit}">
-                                            <?php if(mb_strlen($item['audit']) > 5){?>
-                                                <?php echo mb_substr($item['audit'], 0, 5) ?><span>...</span>
-                                            <?php }else{ ?>
-                                                <?php echo $item['audit'] ?>
-                                            <?php } ?>
-                                        </span>)
-                                    </if>
-                                </td>
-                                <td>
-
                                 </td>
 
                             </tr>
@@ -92,6 +87,11 @@
                                             <option value="">所有状态</option>
                                             <option value="1" <?php if($o_status === '1'){ echo "selected";} ?>>发布</option>
                                             <option value="0" <?php if($o_status === '0'){ echo "selected";} ?>>屏蔽</option>
+                                        </select>
+                                        <select name="o_type">
+                                            <option value="">所有类型</option>
+                                            <option value="1" <?php if($o_type === '1'){ echo "selected";} ?>>Feedback</option>
+                                            <option value="2" <?php if($o_type === '2'){ echo "selected";} ?>>Message</option>
                                         </select>
                                         <span class="info">模糊查询</span>
                                         <input type="text" name="o_keyword" size="30" placeholder="内容，关联文章" value="<?php echo $o_keyword ?>" />

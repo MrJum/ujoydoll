@@ -64,12 +64,7 @@ function saySorry(){
 <!--                    </li>-->
                     <li>
                         <div class='dd'>
-                            <div class='fllct'><a href='<?php echo admin_url("feedback/mgr/")?>'  target='main'>Feedback</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class='dd'>
-                            <div class='fllct'><a href='<?php echo admin_url("comment/mgr/")?>'  target='main'>留言板</a></div>
+                            <div class='fllct'><a href='<?php echo admin_url("feedback/mgr/")?>'  target='main'>留言板/Feedback</a></div>
                         </div>
                     </li>
                 </ul>

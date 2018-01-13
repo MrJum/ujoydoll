@@ -60,14 +60,21 @@
     $(function(){
         $('#message-text').keydown(function (evt) {
             var msglen = $('#message-text').val().length;
-            console.log(evt);
             if(msglen > 500 && evt.key != 'Backspace'){
                 $("#message-size").html(500);
                 return false;
             }else{
                 $("#message-size").html(msglen > 500 ? 500 : msglen);
             }
-
+        });
+        $('#message-text').keyup(function (evt) {
+            var msglen = $('#message-text').val().length;
+            if(msglen > 500){
+                $("#message-size").html(500);
+                return false;
+            }else{
+                $("#message-size").html(msglen > 500 ? 500 : msglen);
+            }
         });
     });
 </script>
