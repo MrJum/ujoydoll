@@ -5,6 +5,8 @@ var Class = {
     create: function() { return function() { this.init.apply(this, arguments);}}
 };
 var YygPost = Class.create();
+var YygPost_contentEditor = null;
+var YygPost_introEditor = null;
 YygPost.prototype = {
     init : function(config){
         this.setConfig(config);
@@ -13,8 +15,6 @@ YygPost.prototype = {
         this.del_attac_url = ('del_attac_url' in config) ? config['del_attac_url'] : null;
         this.content_id = ('content_id' in config) ? config['content_id'] : null;
     },
-    contentEditor: null,
-    introEditor: null,
     initFileUpload: function (maxImgSize, upUrl) {
         var thiz = this;
         $('#yyg_uploadImg').fileupload({
@@ -150,9 +150,9 @@ YygPost.prototype = {
 
         ext = ext.toLowerCase();
         if(ext == 'png' || ext == 'gif' || ext == 'jpg' || ext == 'jpeg' || ext == 'bmp'){
-            editor.appendHtml('<img src=" '+ imgUrl + '" alt="" />');
+            YygPost_contentEditor.appendHtml('<img src=" '+ imgUrl + '" alt="" />');
         }else{
-            editor.appendHtml('<a target="_blank" href="'+ imgUrl + '">' + name + '</a>');
+            YygPost_contentEditor.appendHtml('<a target="_blank" href="'+ imgUrl + '">' + name + '</a>');
         }
 
     },
@@ -183,7 +183,7 @@ YygPost.prototype = {
 };
 
 KindEditor.ready(function(K) {
-    YygPost.contentEditor = K.create('#yyg_content', {
+    YygPost_contentEditor = K.create('#yyg_content', {
         resizeType : 1,
         allowPreviewEmoticons : false,
         allowImageUpload : false,
@@ -204,7 +204,7 @@ KindEditor.ready(function(K) {
 });
 
 KindEditor.ready(function(K) {
-    YygPost.introEditor = K.create('#yyg_intro', {
+    YygPost_introEditor = K.create('#yyg_intro', {
         resizeType : 1,
         allowPreviewEmoticons : false,
         allowImageUpload : false,

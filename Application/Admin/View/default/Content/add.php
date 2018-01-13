@@ -121,11 +121,11 @@
         </a>
         <div class="btn-xs pull-right">
             <select class="img-insert-select">
+                <option value="0">原图</option>
                 <% var thumbsWidths = jsondata.thumb.width.reverse(); %>
                 <% thumbsWidths.forEach(function(wh){ %>
                 <option value="<%= wh %>">缩略图<%= wh %>px</option>
                 <% }) %>
-                <option value="0">原图</option>
             </select>
             &nbsp;<label style="font-weight: normal"><input id="main-img-checkbox-<%= jsondata.id %>" type="checkbox" class="set-main-img-checkbox" <% if(jsondata.ismain=='1'){%>checked <%}%> onclick="yygPost.selectMainPic(this)">主图</label>
             &nbsp;<a href="javascript:void(0)" onclick="yygPost.addToContent('<%= jsondata.path%>', '<%= jsondata.name%>', this, '<%= jsondata.thumb.prefix %>')"

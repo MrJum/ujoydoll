@@ -79,7 +79,7 @@
                 <a href="/aboutus.html" class="ia">About Us</a>
             </div>
             <div class="i ">
-                <a href="http://t159.web.ueeshop.com/info/" class="ia">News</a>
+                <a href="/news.html" class="ia">News</a>
             </div>
             <div class="clear"></div>
         </div>
