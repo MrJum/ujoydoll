@@ -68,6 +68,7 @@
                                 <td class="tail">
                                     <input type="hidden"  name="yyg_uploadImg_ids" value="" id="yyg_uploadImg_ids"/>
                                     <input type="hidden"  name="set_main_img_id" value="" id="set_main_img_id"/>
+                                    <input type="hidden"  name="set_product_img_id" value="" id="set_product_img_id"/>
                                     <span class="btn btn-primary fileinput-button" style="margin-top: 12px">
                                         <i class="glyphicon glyphicon-plus"></i>
                                         <span>上传图片...</span>
@@ -130,6 +131,7 @@
                 <% }) %>
             </select>
             &nbsp;<label style="font-weight: normal"><input id="main-img-checkbox-<%= jsondata.id %>" type="checkbox" class="set-main-img-checkbox" <% if(jsondata.ismain=='1'){%>checked <%}%> onclick="yygPost.selectMainPic(this)">主图</label>
+            &nbsp;<label style="font-weight: normal"><input id="product-img-checkbox-<%= jsondata.id %>" type="checkbox" class="set-product-img-checkbox" <% if(jsondata.isproduct=='1'){%>checked <%}%> onclick="yygPost.selectProductPic(this)">产品展示</label>
             &nbsp;<a href="javascript:void(0)" onclick="yygPost.addToContent('<%= jsondata.path%>', '<%= jsondata.name%>', this, '<%= jsondata.thumb.prefix %>')"
                      class="btn btn-primary btn-xs" style="color:#fff;">插入</a>
         </div>

@@ -57,5 +57,45 @@ class ProductController extends BaseController {
         $this->assign('keyword', $keyword);
         $this->display("Product:search");
     }
+
+    public function detail($ccode='', $pcode=''){
+        $category = M("category")->where(['pagecode' => $ccode])->find();
+        $product = M("content")->where(['pagecode' => $pcode, 'category_id' => $category['id']])->find();
+        $product['content'] = htmlspecialchars_decode($product['content']);
+        $product['intro'] = htmlspecialchars_decode($product['intro']);
+        $this->assign('product', $this->makeArticleCanDisplay($product, $category));
+        $this->assign('cur_category', $category);
+        $this->assign('attacs', $this->getProductAttacs($product['id']));
+        $this->display();
+    }
+
+    private function getProductAttacs($cid){
+        if(empty($cid)) return 0;
+        $arels = M("attac_rel")->where("`rel_id`='$cid' and `type`= 1 and isproduct=1")->select();
+
+        $dataJsons = array();
+        $attacM = M("attac");
+        $opt = $this->getOptions();
+
+        foreach($arels as $ar){
+            $att_id = $ar['att_id'];
+            $attac = $attacM->find($att_id);
+            if(empty($attac)) {
+                M("attac_rel")->where("`rel_id`='$cid' and `att_id`='$att_id' and `type`=1")->delete();
+                continue;
+            }
+            $dataJson = array();
+            $dataJson['id'] = $attac['id'];
+            $fpath = __ROOT__.$attac['path'];
+            $dataJson['path'] = $fpath;
+            $fdir = substr($fpath, 0, strrpos($fpath, '/'));
+            $fname = substr($fpath, strrpos($fpath, '/') + 1);
+            foreach(explode(',', $opt->thumbMaxWidth) as $pwidth){
+                $dataJson['thumb'] []= $fdir.'/thumbs/'.'thumb_'.$pwidth.'_'.$fname;
+            }
+            array_push($dataJsons, $dataJson);
+        }
+        return $dataJsons;
+    }
     
 }

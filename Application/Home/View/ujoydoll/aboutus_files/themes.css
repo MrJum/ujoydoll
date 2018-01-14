@@ -371,7 +371,7 @@
 /*前台编辑器 */
 
 /*产品上下翻页*/
-.pro_prev_next{line-height:22px; text-align:right;}
+.pro_prev_next{line-height:22px; text-align:right;margin-bottom: 2px;}
 .pro_prev_next a{display:inline-block; width:22px; height:22px; margin:0 2px; background:url(../images/ico/prev_next.png) no-repeat; text-decoration:none; content:'';}
 .pro_prev_next a.prev{background-position:0 0;}
 .pro_prev_next a.next{background-position:-22px 0;}

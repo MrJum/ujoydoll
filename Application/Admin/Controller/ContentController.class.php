@@ -282,7 +282,10 @@ class ContentController extends BaseController {
 
 					$this->_addAttac($cid);
 					$contentD->addTags($cid, I("post.tags"));
-					$this->addMainImg($cid, array_pop(explode('-', I("post.set_main_img_id"))));
+					$this->addMainImg($cid, array_pop(explode(',', array_pop(explode('-', I("post.set_main_img_id"))))));
+					$this->addProductImg($cid, array_map(function($it){
+						return array_pop(explode('-', $it));
+					},explode(',', I("post.set_product_img_id"))));
 					$contentD->commit();
 				}catch (\Exception $e){
 					$contentD->rollback();
@@ -402,7 +405,10 @@ class ContentController extends BaseController {
 					
 					$contentD->save();
 					$this->_addAttac(I("id"));
-					$this->addMainImg($cid, array_pop(explode('-', I("post.set_main_img_id"))));
+					$this->addMainImg($cid, array_pop(explode(',', array_pop(explode('-', I("post.set_main_img_id"))))));
+					$this->addProductImg($cid, array_map(function($it){
+						return array_pop(explode('-', $it));
+					},explode(',', I("post.set_product_img_id"))));
 					$contentD->addTags($cid, I("post.tags"));
 					$contentD->commit();
 				}catch (\Exception $e){
@@ -510,6 +516,7 @@ class ContentController extends BaseController {
 			$dataJson['desc'] = brReplace($attac['description']);
 			$dataJson['thumb'] = ['width' => explode(',', $opt->thumbMaxWidth), 'prefix' => $opt->thumbPrefix];
 			$dataJson['ismain'] = $ar['ismain'];
+			$dataJson['isproduct'] = $ar['isproduct'];
 			array_push($dataJsons, $dataJson);
 		}
 
@@ -651,5 +658,23 @@ class ContentController extends BaseController {
 			M("attac_rel")->rollback();
 		}
 
+	}
+
+	private function addProductImg($cid, $productPicIds){
+		if(empty($productPicIds)){
+			return;
+		}
+		$productPicIds = array_unique($productPicIds);
+		M("attac_rel")->where(['rel_id' => $cid, 'type' => 1])->save(['isproduct' => 0]);
+		M("attac_rel")->startTrans();
+		try{
+			foreach($productPicIds as $productPicId){
+				M("attac_rel")->where(['att_id' => $productPicId, 'rel_id' => $cid, 'type' => 1])->save(['isproduct' => 1]);
+			}
+
+			M("attac_rel")->commit();
+		}catch (\Exception $e){
+			M("attac_rel")->rollback();
+		}
 	}
 }

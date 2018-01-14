@@ -163,7 +163,7 @@ class BaseController extends Controller {
 		$newArticles = [];
 
 		foreach($articles as $article){
-			$article['link_url'] = site_url('/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html');
+			$article['link_url'] = '/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html';
 			$article['main_img'] = $this->getMainImg($article['id']);
 			$newArticles []= $article;
 		}
@@ -171,7 +171,7 @@ class BaseController extends Controller {
 	}
 
 	protected function makeArticleCanDisplay($article, $category){
-		$article['link_url'] = site_url('/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html');
+		$article['link_url'] = '/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html';
 		$article['main_img'] = $this->getMainImg($article['id']);
 		return $article;
 	}
