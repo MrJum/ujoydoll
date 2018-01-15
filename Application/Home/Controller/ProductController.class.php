@@ -61,9 +61,14 @@ class ProductController extends BaseController {
     public function detail($ccode='', $pcode=''){
         $category = M("category")->where(['pagecode' => $ccode])->find();
         $product = M("content")->where(['pagecode' => $pcode, 'category_id' => $category['id']])->find();
+        $nextProduct = M("content")->where(['id' => $product['id'] + 1, 'category_id' => $category['id']])->find();
+        $prevProduct = M("content")->where(['id' => $product['id'] - 1, 'category_id' => $category['id']])->find();
+
         $product['content'] = htmlspecialchars_decode($product['content']);
         $product['intro'] = htmlspecialchars_decode($product['intro']);
         $this->assign('product', $this->makeArticleCanDisplay($product, $category));
+        $this->assign('next', $this->makeArticleCanDisplay($nextProduct, $category));
+        $this->assign('prev', $this->makeArticleCanDisplay($prevProduct, $category));
         $this->assign('cur_category', $category);
         $this->assign('attacs', $this->getProductAttacs($product['id']));
         $this->display();

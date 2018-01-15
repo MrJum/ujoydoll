@@ -7,7 +7,6 @@
         .ban2{ width:310px; height:310px; position:relative; overflow:hidden;}
         .ban2 ul{ position:absolute; left:0; top:0;}
         .ban2 ul li{ width:310px; height:310px;}
-        .prev{ float:left; cursor:pointer;}
         .num{ height:84px;overflow:hidden; width:268px; position:relative;float:left;}
         .min_pic{ padding-top:10px;}
         .num ul{ position:absolute; left:0; top:0;}
@@ -65,9 +64,14 @@
                 </div>
                     <div class="fr">
                         <div class="fr info pro_right">
-                            <div class="pro_prev_next clean">
-                                <a href="http://t159.web.ueeshop.com/only-flowers-of-wedding-hairstyles-p00056p1.html" title="only flowers of Wedding Hairstyles" class="next"></a>
-                            </div>
+                                <div class="pro_prev_next clean">
+                                    <?php if($prev){ ?>
+                                        <a href="<?php echo $prev['link_url'] ?>" title="<?php echo $prev['title'] ?>" class="prev"></a>
+                                    <?php } ?>
+                                    <?php if($next){ ?>
+                                        <a href="<?php echo $next['link_url'] ?>" title="<?php echo $next['title'] ?>" class="next"></a>
+                                    <?php } ?>
+                                </div>
                             <h1 class="name"><?php echo $product['title'] ?></h1>
                             <div class="brief"><?php echo $product['intro'] ?>
                             </div>
@@ -78,11 +82,10 @@
                             <div class="blank15"></div>
                             <div class="blank12"></div>
                             <div class="share">
-                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                                <div class="addthis_sharing_toolbox" data-url="http://t159.web.ueeshop.com/only-flowers-of-wedding-hairstyles-p00057p1.html"
-                                     data-title="only flowers of Wedding Hairstyles" style="clear: both;">
 
-                                </div>
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <div class="addthis_inline_share_toolbox"></div>
+
                             </div><!-- .share -->
                             <div class="blank25"></div>
                         </div>
@@ -143,4 +146,6 @@
     });
 
 </script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a5cc485b61e50c0"></script>
 <include file="Public:footer"/>

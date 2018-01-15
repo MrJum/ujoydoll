@@ -171,6 +171,9 @@ class BaseController extends Controller {
 	}
 
 	protected function makeArticleCanDisplay($article, $category){
+		if(empty($article)){
+			return null;
+		}
 		$article['link_url'] = '/product/'.$category['pagecode'].'/'.$article['pagecode'].'.html';
 		$article['main_img'] = $this->getMainImg($article['id']);
 		return $article;
