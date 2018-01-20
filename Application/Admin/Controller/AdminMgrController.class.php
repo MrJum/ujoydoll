@@ -22,7 +22,7 @@ class AdminMgrController extends BaseController {
                exit();
           }else{
               $adminD->add();
-              $this->success("添加管理员成功", __URL__);
+              $this->success("添加管理员成功", C('__URL__'));
           }
 
        }
@@ -46,9 +46,9 @@ class AdminMgrController extends BaseController {
                $this->error($adminD->getError());
                exit();
           }else{
-              //更新用
-              $adminD->save();
-              $this->success("更新管理员密码成功", __URL__);
+               //更新用
+               $adminD->save();
+              $this->success("更新管理员密码成功", C('__URL__'));
           }
 
        }

@@ -26,7 +26,6 @@ class AdminsModel extends RelationModel{
 		 array('password','hashPassword',3,'function') , // 对password字段在新增的时候使md5函数处理
          array('createtime','curDate',1,'callback'), // 对createtime字段在更新的时候写入当前时间戳
 	);
-    
 
     
     public function curDate(){
@@ -46,7 +45,7 @@ class AdminsModel extends RelationModel{
     protected  function checkOldPassword($oldPass){
         $oldPass = hashPassword($oldPass);
         $c = $this->where("`password`='$oldPass'")->count();
-        if($c > 1){
+        if($c >= 1){
            return True;
        }
        return False;

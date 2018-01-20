@@ -10,6 +10,7 @@
   <tr>
    <td bgcolor="#FFFFFF" width="100%">
    <form action="__URL__/changePassword" method="post" name="form1">
+    <input type="hidden" name="id" value="{$admin.id}">
 <div id="_mainsearch">
      
      <table width="100%" style='' id="" border="0" cellspacing="1" cellpadding="1" bgcolor="#cfcfcf">
