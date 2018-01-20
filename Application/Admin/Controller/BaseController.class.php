@@ -156,5 +156,8 @@ class BaseController extends Controller {
 	public function isGet(){
 		return IS_GET;
 	}
-	
+
+	public function isPOST(){
+		return IS_POST;
+	}
 }
