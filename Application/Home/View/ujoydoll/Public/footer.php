@@ -6,32 +6,32 @@
             <div class="t">KEEP IN TOUCH</div>
             <div class="r">
                 <span class="i0"></span>
-                <font>02083226791</font>
+                <font><a href="tel:+8615986783597" title="vagasnail@gmail.com">+8615986783597</a></font>
             </div>
             <div class="r">
                 <span class="i1"></span>
-                <a href="skype:654123?chat">654123</a>
+                <a href="skype:nancyzeng0089?chat">nancyzeng0089</a>
             </div>
             <div class="r">
                 <span class="i2"></span>
-                <a href="mailto:320006220@qq.com" title="320006220@qq.com">320006220@qq.com</a>
+                <a href="mailto:vagasnail@gmail.com" title="vagasnail@gmail.com">vagasnail@gmail.com</a>
             </div>
         </div>
         <div class="fl follow">
             <div class="t">Follow Us</div>
             <div class="r">
                 <span class="i0"></span>
-                <a href="https://api.addthis.com/oexchange/0.8/forward/facebook/offer?url=http://t159.web.ueeshop.com/&amp;pubid=ra-52b80aeb367a2886&amp;ct=1&amp;title=lywebsite&amp;pco=tbxnj-1.0"
+                <a href="https://api.addthis.com/oexchange/0.8/forward/facebook/offer?url=#"
                    target="_blank">Facebook</a>
             </div>
             <div class="r">
                 <span class="i1"></span>
-                <a href="https://api.addthis.com/oexchange/0.8/forward/twitter/offer?url=http://t159.web.ueeshop.com/&amp;pubid=ra-52b80aeb367a2886&amp;ct=1&amp;title=lywebsite&amp;pco=tbxnj-1.0"
+                <a href="https://api.addthis.com/oexchange/0.8/forward/twitter/offer?url=#"
                    target="_blank">Twitter</a>
             </div>
             <div class="r">
                 <span class="i2"></span>
-                <a href="https://api.addthis.com/oexchange/0.8/forward/google_plusone_share/offer?url=http://t159.web.ueeshop.com/&amp;pubid=ra-52b80aeb367a2886&amp;ct=1&amp;title=lywebsite&amp;pco=tbxnj-1.0"
+                <a href="https://api.addthis.com/oexchange/0.8/forward/google_plusone_share/offer?url=#"
                    target="_blank">Google Plus</a>
             </div>
         </div>

@@ -68,33 +68,15 @@
             <div></div>
             <span class="qqserver_arrow"></span> </div>
         <ul>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
+            <li> <a title="click here and send message to me" href="skype:nancyzeng0089?chat" target="_blank">
                     <i class="iskype"></i>
                     <span>Nancy</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
-                    <i class="iskype"></i>
-                    <span>Derrick</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
+            <li> <a title="click here and send message to me" href="tel:+8615986783597" target="_blank">
                     <i class="iphone"></i>
-                    <span>+8613570824146</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
-                    <i class="iphone"></i>
-                    <span>+8613380363476</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
-                    <i class="iphone"></i>
-                    <span>+8613570824146</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
+                    <span>+8615986783597</span> </a> </li>
+            <li> <a title="click here and send message to me" href="mailto:vagasnail@gmail.com" target="_blank">
                     <i class="imail"></i>
-                    <span>Eartha</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
-                    <i class="imail"></i>
-                    <span>Eartha</span> </a> </li>
-            <li style="border-bottom: none"> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
-                    <i class="imail"></i>
-                    <span>Eartha</span> </a> </li>
-            <li style="border-bottom: none"> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
-                    <i class="iwechat"></i>
-                    <span>Eartha</span> </a> </li>
+                    <span>Nancy</span> </a> </li>
         </ul>
     </div>
 </div>
