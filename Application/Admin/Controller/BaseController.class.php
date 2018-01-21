@@ -160,4 +160,17 @@ class BaseController extends Controller {
 	public function isPOST(){
 		return IS_POST;
 	}
+
+	/**
+	 * 获取当前Action名称
+	 * @access protected
+	 */
+	protected function getActionName() {
+		if(empty($this->name)) {
+			// 获取Action名称
+			$offset=strrpos(get_class($this), '\\', -10);  // 从尾部第 10 个位置开始查找
+			$this->name     =   substr(get_class($this),$offset+1,-10);
+		}
+		return $this->name;
+	}
 }
