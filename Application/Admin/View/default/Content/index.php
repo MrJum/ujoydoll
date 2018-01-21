@@ -83,15 +83,9 @@
                                             <span class="caret"></span>
                                         </a>
                                         <ul id="menu3" class="dropdown-menu" aria-labelledby="drop6">
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('lunboimgs', '{$item.id}', this)">图片轮播</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('yunyuzhishi', '{$item.id}', this)">孕育知识</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('qingzibaike', '{$item.id}', this)">亲子百科</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('muyinyoupin', '{$item.id}', this)">母婴优品</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('ertonggushi', '{$item.id}', this)">儿童故事</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('ertongdonghua', '{$item.id}', this)">儿童动画</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('fumuketang', '{$item.id}', this)">父母课堂</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('tupianwenzhang', '{$item.id}', this)">图片文章</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('rediandaodu', '{$item.id}', this)">热点导读</a></li>
+                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('repin', '{$item.id}', this)">热品</a></li>
+                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('xinpin', '{$item.id}', this)">新品</a></li>
+                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('tuijian', '{$item.id}', this)">推荐</a></li>
                                         </ul>
                                     </div>
                                 </td>
