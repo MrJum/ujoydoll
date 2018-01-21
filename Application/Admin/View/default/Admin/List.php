@@ -57,8 +57,8 @@
     <td>
     <?php if(session(C("__YYG_AUTH_NAME__")) != $user['name']){?>
           <select name="role" onchange="changeRole(this, '<?php echo $user['name']?>')" >
-               <option value="{$Think.config.__YYG_EDITOR__}" <?php if($user['role'] == C("__YYG_EDITOR__")) echo ' selected="selected" ';?> >{$Think.config.__YYG_EDITOR__|roleShow=### }</option>
-               <option value="{$Think.config.__YYG_ADMIN__}" <?php if($user['role'] == C("__YYG_ADMIN__")) echo ' selected="selected" ';?> >{$Think.config.__YYG_ADMIN__|roleShow=### }</option>
+               <option value="<?php echo C("__YYG_EDITOR__") ?>" <?php if($user['role'] == C("__YYG_EDITOR__")) echo ' selected="selected" ';?> ><?php echo roleShow(C("__YYG_EDITOR__")) ?></option>
+               <option value="<?php echo C("__YYG_ADMIN__") ?>" <?php if($user['role'] == C("__YYG_ADMIN__")) echo ' selected="selected" ';?> ><?php echo roleShow(C("__YYG_ADMIN__")) ?></option>
            </select>
     <?php }else{?>
     <?php echo roleShow($user['role'])?>
