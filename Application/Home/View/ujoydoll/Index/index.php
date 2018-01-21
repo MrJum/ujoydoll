@@ -76,10 +76,10 @@
                 </div>
                 <div class="bd"><a href="javascript:;" class="prev"></a><a href="javascript:;" class="next"></a>
                     <ul>
-                        <li style="display: none;"><a href="javascript:void(0);"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/slideBox/e67ebada48.jpg"></a>
+                        <li style="display: none;"><a href="javascript:void(0);"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/slideBox/1.jpg"></a>
                         </li>
-                        <li style="display: list-item;"><a href="javascript:void(0);"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/slideBox/764f38ac95.jpg"></a></li>
-                        <li style="display: none;"><a href="javascript:void(0);"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/slideBox/fcb5326342.jpg"></a>
+                        <li style="display: list-item;"><a href="javascript:void(0);"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/slideBox/2.jpg"></a></li>
+                        <li style="display: none;"><a href="javascript:void(0);"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/slideBox/3.jpg"></a>
                         </li>
                     </ul>
                 </div>
