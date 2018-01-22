@@ -73,7 +73,10 @@
                 </div><!-- end of .sub -->
             </div>
             <div class="i ">
-                <a href="/feedback.html" class="ia">Feedback</a>
+                <a href="/product/new-arrival.html" class="ia">New Arrival</a>
+            </div>
+            <div class="i ">
+                <a href="/fandq.html" class="ia">F&Q</a>
             </div>
             <div class="i ">
                 <a href="/aboutus.html" class="ia">About Us</a>

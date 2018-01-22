@@ -14,7 +14,7 @@
             </div>
             <div class="r">
                 <span class="i2"></span>
-                <a href="mailto:vagasnail@gmail.com" title="vagasnail@gmail.com">vagasnail@gmail.com</a>
+                <a href="mailto:sales2@jekdoll.com" title="vagasnail@gmail.com">Nancy</a>
             </div>
         </div>
         <div class="fl follow">
@@ -99,5 +99,6 @@
 <script type="text/javascript">try{ clicky.init(101096743); }catch(e){}</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101096743ns.gif" /></p></noscript>
 <?php }?>
+<include file="Public:onlineservice" />
 </body>
 </html>

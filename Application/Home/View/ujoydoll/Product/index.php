@@ -44,5 +44,4 @@
     </div>
 </div>
 <div class="blank25"></div>
-<include file="Public:onlineservice"/>
 <include file="Public:footer"/>

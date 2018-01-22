@@ -74,9 +74,12 @@
             <li> <a title="click here and send message to me" href="tel:+8615986783597" target="_blank">
                     <i class="iphone"></i>
                     <span>+8615986783597</span> </a> </li>
-            <li> <a title="click here and send message to me" href="mailto:vagasnail@gmail.com" target="_blank">
+            <li> <a title="click here and send message to me" href="mailto:sales2@jekdoll.com" target="_blank">
                     <i class="imail"></i>
                     <span>Nancy</span> </a> </li>
+            <li> <a title="click here and send message to me" href="nancyzeng0089@gmail.com" target="_blank">
+                    <i class="imail"></i>
+                    <span>Nancy(option)</span> </a> </li>
         </ul>
     </div>
 </div>
