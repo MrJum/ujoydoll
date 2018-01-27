@@ -83,9 +83,9 @@
                                             <span class="caret"></span>
                                         </a>
                                         <ul id="menu3" class="dropdown-menu" aria-labelledby="drop6">
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('repin', '{$item.id}', this)">热品</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('xinpin', '{$item.id}', this)">新品</a></li>
-                                            <li><a href="javascript:void(0)" onclick="setToDisplayIndex('tuijian', '{$item.id}', this)">推荐</a></li>
+                                            <?php foreach($indexDisplays as $indexDisplay){ ?>
+                                                <li><a href="javascript:void(0)" onclick="setToDisplayIndex('{$indexDisplay.id}', '{$item.id}', this)">{$indexDisplay.name}</a></li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                 </td>

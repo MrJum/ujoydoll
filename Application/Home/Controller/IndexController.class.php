@@ -16,4 +16,15 @@ class IndexController extends BaseController {
         $this->display("Aboutus:aboutus");
     }
 
+
+    public function addEmail(){
+        $email = remove_xss(I('post.Email'));
+        $emailEntity = M("email")->where(['email' => $email])->find();
+        if(empty($emailEntity)){
+            M("email")->data(['email' => $email, 'createtime' => date("Y-m-d H:i:s"), 'modifytime' => date("Y-m-d H:i:s")])->add();
+        }
+
+        echo json_encode(['status' => 1, 'msg' => '']);
+        die();
+    }
 }

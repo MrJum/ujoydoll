@@ -204,6 +204,7 @@ class ContentController extends BaseController {
 			$list[$i]['category_name'] =  $subCategory ? $subCategory['name'] : "";
 		}
 
+		$indexDisplays = M("indexdisplay")->where()->select(); //获取首页展示模块配置
 		$this->assign('category', $category);// 赋值数据集
 		array_unshift($subCategorys, $category);
 		$this->assign('categorys', $subCategorys);// 赋值数据集
@@ -214,6 +215,7 @@ class ContentController extends BaseController {
 		$this->assign('o_keyword', $o_keyword);
 		$this->assign('startdate', $startdate);
 		$this->assign('enddate', $enddate);
+		$this->assign('indexDisplays', $indexDisplays);
 		$this->assign('page', $show);// 赋值分页输出
 		
 	}
@@ -636,8 +638,12 @@ class ContentController extends BaseController {
 	public function setToDisplayIndex(){
 		$disId = I('post.disId');
 		$cid = I('post.id');
-		$res = D("Content")->where("`id`='$cid'")->save(['indexdisplay' => $disId]);
-		$this->jsonReturn($res);
+		$oldIndexDisplayContRel = M("indexdisplay_cont_rel")->where(['indexdisplay_id' => $disId, 'cid' => $cid])->find();
+		$ret = 1;
+		if(empty($oldIndexDisplayContRel)){
+			$ret = M("indexdisplay_cont_rel")->data(['indexdisplay_id' => $disId, 'cid' => $cid])->add();
+		}
+		$this->jsonReturn($ret);
 	}
 
 	private function addMainImg($cid, $mainPicId)

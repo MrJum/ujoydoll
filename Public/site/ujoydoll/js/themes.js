@@ -90,7 +90,7 @@ $(function(){
 	$('#newsletter').submit(function(){//订阅ok
 		if(global_obj.check_form($(this).find('*[notnull]'), $(this).find('*[format]'))){return false;}
 		$(this).find('input[type=submit]').attr('disabled', 'disabled');
-		$.post('?do_action=action.newsletter', $(this).serialize(), function(data){
+		$.post('/Home/Index/addEmail', $(this).serialize(), function(data){
 			if(data.status==1){
 				global_obj.win_alert(lang_obj.global.add_newsletter, function(){$('#newsletter input[name=Email]').val('');});
 			}else{

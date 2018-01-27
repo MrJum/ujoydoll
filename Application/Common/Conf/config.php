@@ -26,16 +26,5 @@ return array(
         '36sui' => '3-6岁',
     ],
     '__YYG_UPLOAD_DIR__' => '/Uploads',
-    '__YYG_INDEX_DISPLAY' => [ //首页展示
-        'lunboimgs' => 4,
-        'yunyuzhishi' => 7,
-        'qingzibaike' => 7,
-        'muyinyoupin' => 4,
-        'ertonggushi' => 8,
-        'ertongdonghua' => 10,
-        'fumuketang' => 8,
-        'rediandaodu' => 25,
-        'tupianwenzhang' => 3,
-    ],
     '__YYG_TAG_SIZE__' => 12,
 );

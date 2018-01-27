@@ -6,17 +6,17 @@ namespace Admin\Controller;
 class IndexMgrController extends BaseController {
     
     public function index(){
-        $indexDisplays = C("__YYG_INDEX_DISPLAY");
+        $indexDisplays = M("indexdisplay")->where()->select();
         $indexDisplayList = [];
         /** @var  $contentService \Common\Service\ContentService*/
         $contentService = D("Content", "Service");
-        foreach($indexDisplays as $dsid => $limitSize){
-            $contentEntitys = $contentService->getContentByIndexDisplay($dsid);
+        foreach($indexDisplays as $indexDisplay){
+            $contentEntitys = $contentService->getContentByIndexDisplay($indexDisplay['id']);
             foreach($contentEntitys as &$contentEntity){
                 $contentEntity['category'] = M("category")->where(['id' => $contentEntity['category_id']])->find();
                 $contentEntity['is_set_main'] = !empty(M('attac_rel')->where(['ismain' => 1, 'rel_id' => $contentEntity['id']])->find());
             }
-            $indexDisplayList[$dsid] = ['articles' => $contentEntitys, 'limit_size' => $limitSize];
+            $indexDisplayList[$indexDisplay['id']] = ['articles' => $contentEntitys, 'limit_size' => $indexDisplay['limitsize']];
         }
         $this->assign('indexDisplayList', $indexDisplayList);
         $this->display();
@@ -24,13 +24,13 @@ class IndexMgrController extends BaseController {
     
 
     public function cancelDisplayIndex(){
-        $cid = I("post.id");
-        $contentEntity = D("Content")->where(["id" => $cid])->find();
-        if(empty($contentEntity)){
-            $this->jsonReturn(false, '文章不存在');
+        $cid = I("post.cid");
+        $iid = I("post.iid");
+        $indexDisplayCont = M("indexdisplay_cont_rel")->where(['indexdisplay_id' => $iid, 'cid' => $cid])->find();
+        if(empty($indexDisplayCont)){
+            $this->jsonReturn(false, '不存在的关系');
         }
-        $contentEntity['indexdisplay'] = '';
-        D("Content")->where("`id`='$cid'")->save(['indexdisplay' => '']);
+        M("indexdisplay_cont_rel")->where(['indexdisplay_id' => $iid, 'cid' => $cid])->delete();
         $this->jsonReturn(true);
     }
    

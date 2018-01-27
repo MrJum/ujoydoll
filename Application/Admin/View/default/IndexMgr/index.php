@@ -7,14 +7,13 @@
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist" id="mytabs">
-            <li role="presentation" class="active"><a href="#repin" aria-controls="repin" role="tab" data-toggle="tab">热品</a></li>
-            <li role="presentation"><a href="#xinpin" aria-controls="xinpin" role="tab" data-toggle="tab">新品</a></li>
-            <li role="presentation"><a href="#tuijian" aria-controls="tuijian" role="tab" data-toggle="tab">推荐</a></li>
+            <li role="presentation" class="active"><a href="#tuijian" aria-controls="tuijian" role="tab" data-toggle="tab">推荐</a></li>
+            <li role="presentation"><a href="#baopin" aria-controls="baopin" role="tab" data-toggle="tab">爆品</a></li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="repin">
+            <div role="tabpanel" class="tab-pane active" id="tuijian">
                 <table class="table table-hover ">
                     <thead>
                     <tr>
@@ -25,13 +24,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($indexDisplayList['repin']['articles'] as $idx => $indexDisplayItem){ ?>
+                    <?php foreach($indexDisplayList[1]['articles'] as $idx => $indexDisplayItem){ ?>
                     <tr>
                         <td scope="row"><?php echo $idx+1 ?></td>
                         <td><?php echo $indexDisplayItem['title'] ?><span class="pull-right label label-info"><?php echo $indexDisplayItem['is_set_main'] ? '已设置主图' : ''?></span></td>
                         <td><?php echo $indexDisplayItem['category']['name'] ?></td>
                         <td>
-                            <a href="javascript:void(0)" onclick="cancelToDisplayIndex('<?php echo $indexDisplayItem['id'] ?>', '图片轮播', this)">移除</a> |
+                            <a href="javascript:void(0)" onclick="cancelToDisplayIndex('<?php echo $indexDisplayItem['id'] ?>', '1', '图片轮播', this)">移除</a> |
                             <a href="javascript:void(0)" onclick="putToTop('<?php echo $indexDisplayItem['id'] ?>', this)">置顶</a> |
                             <a style="text-decoration: none;" href="javascript:void(0)" onclick="edit_content_page('<?php echo admin_url('/Content/edit/cid/'.$indexDisplayItem['id']) ?>', this)" title="编辑">编辑</a>
                         </td>
@@ -39,9 +38,9 @@
                     <?php } ?>
                     </tbody>
                 </table>
-                <div class="alert alert-info" role="alert">仅在首页展示前<span class="yyg-import"><?php echo $indexDisplayList['repin']['limit_size'] ?></span>篇文章</div>
+                <div class="alert alert-info" role="alert">仅在首页展示前<span class="yyg-import"><?php echo $indexDisplayList[1]['limit_size'] ?></span>篇文章</div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="xinpin">
+            <div role="tabpanel" class="tab-pane" id="baopin">
                 <table class="table table-hover ">
                     <thead>
                     <tr>
@@ -52,13 +51,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($indexDisplayList['xinpin']['articles'] as $idx => $indexDisplayItem){ ?>
+                    <?php foreach($indexDisplayList[2]['articles'] as $idx => $indexDisplayItem){ ?>
                         <tr>
                             <td scope="row"><?php echo $idx+1 ?></td>
                             <td><?php echo $indexDisplayItem['title'] ?><span class="pull-right label label-info"><?php echo $indexDisplayItem['is_set_main'] ? '已设置主图' : ''?></span></td>
                             <td><?php echo $indexDisplayItem['category']['name'] ?></td>
                             <td>
-                                <a href="javascript:void(0)" onclick="cancelToDisplayIndex('<?php echo $indexDisplayItem['id'] ?>', '图片轮播', this)">移除</a> |
+                                <a href="javascript:void(0)" onclick="cancelToDisplayIndex('<?php echo $indexDisplayItem['id'] ?>', '2', '图片轮播', this)">移除</a> |
                                 <a href="javascript:void(0)" onclick="putToTop('<?php echo $indexDisplayItem['id'] ?>', this)">置顶</a> |
                                 <a style="text-decoration: none;" href="javascript:void(0)" onclick="edit_content_page('<?php echo admin_url('/Content/edit/cid/'.$indexDisplayItem['id']) ?>', this)" title="编辑">编辑</a>
                             </td>
@@ -66,29 +65,7 @@
                     <?php } ?>
                     </tbody>
                 </table>
-                <div class="alert alert-info" role="alert">仅在首页展示前<span class="yyg-import"><?php echo $indexDisplayList['xinpin']['limit_size'] ?></span>篇文章</div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="tuijian">
-                <table class="table table-hover ">
-                    <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>标题</th>
-                        <th>分类</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($indexDisplayList['tuijian']['articles'] as $idx => $indexDisplayItem){ ?>
-                        <tr>
-                            <td scope="row"><?php echo $idx+1 ?></td>
-                            <td><?php echo $indexDisplayItem['title'] ?></td>
-                            <td><?php echo $indexDisplayItem['category']['name'] ?></td>
-                            <td><a href="javascript:void(0)" onclick="cancelToDisplayIndex('<?php echo $indexDisplayItem['id'] ?>', '推荐', this)">移除</a></td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
+                <div class="alert alert-info" role="alert">仅在首页展示前<span class="yyg-import"><?php echo $indexDisplayList[2]['limit_size'] ?></span>篇文章</div>
             </div>
     </div>
 </div>
@@ -124,8 +101,8 @@
 </div>
 <script type="text/javascript">
 
-    function cancelToDisplayIndex(cid, moduleName, thiz) {
-        $.post('__URL__/cancelDisplayIndex',{'id' : cid},function(data){
+    function cancelToDisplayIndex(cid, iid, moduleName, thiz) {
+        $.post('__URL__/cancelDisplayIndex',{'cid' : cid, 'iid' : iid},function(data){
             data = comm_parseJsonResult(data);
             if(data == 1){
                 show_success_alert('成功', '文章在首页【' + moduleName + '】模块移除', function () {

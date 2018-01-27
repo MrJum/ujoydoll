@@ -67,6 +67,11 @@ function saySorry(){
                             <div class='fllct'><a href='<?php echo admin_url("feedback/mgr/")?>'  target='main'>留言板/Feedback</a></div>
                         </div>
                     </li>
+                    <li>
+                        <div class='dd'>
+                            <div class='fllct'><a href='<?php echo admin_url("email/mgr/")?>'  target='main'>客户email</a></div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
