@@ -41,7 +41,7 @@
             <div id="curpath">
                 <div class="fl">FAQ</div>
             </div>
-            <div class="blank25"></div>
+            <div class="blank15"></div>
             <div class="product_list">
                 <div id="lib_feedback_form">
                     <?php foreach($fandqs as $fandq){ ?>
