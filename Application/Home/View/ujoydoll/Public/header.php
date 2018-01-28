@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="__PUBLIC__/site/{$Think.THEME_NAME}/images/logo.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="keywords" content="<?php echo $options->keywords ?>">
     <meta name="description" content="<?php echo $options->description ?>">
@@ -75,7 +76,7 @@
                 <a href="/product/new-arrival.html" class="ia">New Arrival</a>
             </div>
             <div class="i ">
-                <a href="/fandq.html" class="ia">F&Q</a>
+                <a href="/fandq.html" class="ia">FAQ</a>
             </div>
             <div class="i ">
                 <a href="/aboutus.html" class="ia">About Us</a>

@@ -4,25 +4,39 @@ namespace Home\Controller;
 class FandqController extends BaseController {
 	
     public function index(){
-        $curCategory = M("category")->where(['pagecode' => 'news'])->find();
-        $imgs = $this->getRelImgs($curCategory['id'], 2);
-        if(empty($imgs)){
-            $curCategory['img'] = null;
-        }else{
-            $curCategory['img'] = $imgs[0];
-        }
-        $this->assign('cur_category', $curCategory);
-        $news = D("content")->where(['category_id' => $curCategory['id'], 'status' => 1])->order("topnum desc, `order`,`createtime` desc")->select();
-        $this->assign('news', $this->makeArticlesCanDisplay($news, $curCategory));
+        $fandqs = [
+            ['q' => 'How does USexDoll.com work?', 'a' =>
+                'Here at USexDoll.com, we sell full-sized sex dolls of both silicone and our revolutionary Silkoskin™ synthetic material. These are sex toys sculpted and detailed to look like extremely attractive women. They are the same size and weight as a real person — specifically, a petite female. We’ve chosen our product line to represent the most popular female body types among the world’s sexiest ladies, so no matter what your personal preferences are for a woman, you’ll find a sex doll among our products that turns you on. Other websites across the Internet sell similar sex dolls compared to ours, but you will not find a site that offers a better intersection of cost and features. Our sex dolls represent the best value on the market: The most detail, the most attention to detail, for the money asked. In fact, our sex dolls cost many times less than comparable dolls with the same features and details. That’s because we work hard to make our silicone sex dolls much more affordable than competitors’ dolls… and our Silkoskin™ dolls are much cheaper than comparable silicone dolls thanks to the lower price of Silkoskin™ itself.
+                 A sex doll from the official SexDoll.com looks and feels like a real person. She has breasts you can fondle, legs you can stroke, a beautiful round rear end you can squeeze, and lips you can kiss and caress. She’s got more than that, though. Each of our sex dolls has three usable orifices that, with plenty of lubricant that is safe for silicone and synthetic materials, can be used to simulate sexual intercourse and oral sex. Each of the dolls in our product line has a textured mouth opening, a textured vaginal opening, and a textured anal opening. You can use any of these to have sex when the doll is properly lubricated. The concept behind a sex doll is that it is the closest simulation to a real woman that you can get in a sex toy. You aren’t just pleasing yourself when you use a sex doll. You are actually having sex. The only difference is that the doll doesn’t talk or move, and can’t stand up on her own. Apart from that you will find yourself having difficulty telling the difference between her and a real person.'],
+            ['q' => 'What do I need to know to maintain one of your sex dolls?', 'a' => 'It’s very easy to take care of your new SexDoll.com sex doll. All you have to do is keep in mind some simple guidelines. Now, silicone has some more caveats compared to Silkoskin™, which is generally easier to take care of and easier to keep clean compared to silicone. If you follow these general guidelines, however, you will be able to keep your sex doll properly cleaned and maintained no matter what it is made of, without damaging it or causing yourself other problems. We want your sex doll to give you a long, useful life. We offer great prices, but a sex doll represents a considerable investment nonetheless. Protect that investment and follow these guidelines for care and maintenance of your sex doll.
+
+First, never have sex with your sex doll without plenty of silicone-safe, synthetic-safe lubricant. It isn’t comfortable to have sex with your doll “dry,” without lubricant, and you won’t enjoy the experience. Perhaps more importantly, however, using your sex doll without lubricant could damage her synthetic flesh. Over time, that could lead to a shorter useful life for your sex doll. To keep your sex doll in the best shape possible, and to have the most fun and the best simulated sexual experience with her, always be generous with the lubricant.
+
+Some of our customers use their sex dolls to facilitate threesomes and swinging. This is wonderful, but keep in mind that if you and another person both have unprotected sex with the same sex doll at the same time or one after the other, this is essentially like having unsafe sex with each other. Never share your sex doll with another person unless you are A) comfortable having unprotected sex with that person; or B) using a condom.
+
+You will want to keep your sex doll properly clean. Over time, bacteria can build up inside the doll, especially if you ejaculate inside one of the doll’s openings and you’re not wearing a condom. (You don’t have to practice “safe sex” with your sex doll, but using a condom helps make cleanup faster and easier.) Always use a mild soap (never anything harsh or caustic, but a mild antibacterial soap is a good choice) and warm water (not hot water). Don’t submerge the doll in hot water (such as in a hot tub) and don’t expose it to extreme heat sources, such as those from hair dryers. When you’ve gently washed your sex doll with the soap and water, pat her dry. Don’t scrub at her vigorously, as this might rough up the synthetic flesh. Remember, silicone is more fragile than Silkoskin™ synthetic flesh, but neither should be roughed up or exposed to high heat.
+
+After sex with your doll, if you’ve cum inside her, be sure to clean her anal, vaginal, and mouth openings after each use. You can skip this step if you use a condom when you have sex with your doll. It speeds cleanup. Using the right lubricant is very important. Never use a lubricant that is not silicone-safe and synthetic safe. Petroleum jelly, for example, will harm the synthetic flesh of your sex doll.
+
+You can clean the hair that comes with your sex doll using a very mild shampoo. Let the wig air dry. Don’t use a hair dryer on it, but a damp towel can be used. Don’t dip your sex doll’s head completely under water, and be gentle when brushing your sex doll’s hair.
+
+Dressing your sex doll in lingerie is one of the things that makes her so much fun. Keep in mind when you pick out her sexy outfits, however, that some fabrics have dyes in them that can stain silicone or Silkoskin™. Always be careful when choosing clothing for your doll so that you do not leave marks or dye on her synthetic skin. When putting on her clothes, or taking them off, always be gentle with her.
+
+Don’t leave your sex doll in direct sunlight, such as in a window at home or inside the a car that is parked in direct sunlight. The added heat and ultraviolet radiation isn’t good for your sex doll’s synthetic material.
+
+Finally, when you pose your sex doll, keep in mind that it’s not good for her internal skeleton to keep her contorted in strange positions for long periods of time. When you’re done using her, lay her out in a more natural position for long term storage until the next time you get the urge to use her for sex. That way, she’ll be ready and waiting to go. We want your sex doll to give you a long, useful life. It’s an investment in your sexual pleasure in which we wholeheartedly believe.'],
+            ['q' => 'Can I trust you to protect my privacy and security?', 'a' => 'Yes, protecting your personal data is very important to us. Given that we are a business built on the Internet, we know just how crucial it is that your information be safeguarded. We will work to protect your confidentiality through every step of the ordering, fulfillment, and shipping processes. We don’t store any unnecessary data on our computers, which means your information won’t be compromised or accessed inappropriately. We only ship discreetly and we also don’t share any data with third party marketing firms, which means you don’t have to worry about ending up on a mailing list — or having anyone else learn that you shopped with us. Our trained, personable, and knowledgeable sales staff will never discuss the fact that you shopped with us with anyone outside the company. They will always take you seriously, always treat you with respect, and always hold your privacy in the highest regard. You can’t enjoy your sex doll if you are worried about your privacy. That’s why we work so hard to protect it. Furthermore, our website is encrypted and secure to protect all data and transactions.'],
+            ['q' => 'Is this like a blow up sex doll?', 'a' => 'Absolutely not. The first sex dolls made widely available to the public were cheap, inflatable dolls. These are not good sex toys. They are ugly, unrealistic dolls that, even if they do have usable orifices for sex, usually aren’t that comfortable. You don’t want one of these abominations in your home. You want a high-quality, realistic love doll, something that turns you on and that also feels good. A blow up sex doll is none of these things. It’s a cheap sex toy that often has rough edges and offers a very poor sexual experience overall. No serious doll lover would consider an inflatable doll to be an acceptable alternative. Never short-change yourself by purchasing one of these.'],
+            ['q' => 'What’s the best way to put my sex doll away when I’m not using her?', 'a' => 'When you first bring your sex doll home, everything about her is exciting. It may be the case eventually, though, that you want to put her aside while you’re not using her. This can present some challenges. Your sex doll is the size and weight, at least roughly, as a petite woman. That means that you have an entire person lying around who cannot move on her own. You will need to move her to keep her where you want her when she is not in use.
+
+The best place to store your doll is right in bed, laid out in a natural pose. This puts the least amount of stress on her internal skeleton and is the most gentle on her synthetic flesh. Most customers generally leave their sex dolls in their beds for this reason, but you could also put her on a couch or in a chair, in a closet (just don’t fold her up too tightly), or anywhere else that you can put her down gently and not twist her body too tightly to make her fit.'],
+        ];
+        $this->assign('fandqs', $fandqs);
+        $this->assign('subtitle', 'FAQ');
         $this->display();
     }
 
 
-    public function detail($code=''){
-        $newDetail = D("content")->where(['pagecode' => $code, 'status' => 1])->find();
-        $newDetail['content'] = htmlspecialchars_decode($newDetail['content']);
-        $this->assign('new', $newDetail);
-        $this->display();
-    }
+
 
 }
