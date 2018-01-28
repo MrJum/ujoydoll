@@ -98,79 +98,37 @@
         </div>
         <div class="blank25"></div>
         <div class="product_list">
-            <div class="item fl ">
+            <?php foreach($hotContents as $idx=>$hotContent){ ?>
+            <div class="item fl <?php echo $idx==3?' no_mar ' : '' ?> ">
                 <div class="inner">
-                    <div class="pic"><a href="#"
-                                        title="Sweetheart Floor-length Chiffon Bridesmaids Dresses"><img class="delay"
-                                                                                                         src="__PUBLIC__/site/{$Think.THEME_NAME}/images/277560a66c.jpg.500x500.jpg"><span></span></a>
+                    <div class="pic"><a href="<?php echo $hotContent['link_url'] ?>"
+                                        title="<?php echo $hotContent['title'] ?>"><img class="delay"
+                                                                                                         src="<?php echo $hotContent['main_img']['path'] ?>"><span></span></a>
                     </div>
                     <div class="blank9"></div>
-                    <div class="name"><a href="#"
-                                         title="Sweetheart Floor-length Chiffon Bridesmaids Dresses">Sweetheart Floor-length Chiffon Bridesmaids Dresses</a></div>
+                    <div class="name"><a href="<?php echo $hotContent['link_url'] ?>"
+                                         title="<?php echo $hotContent['title'] ?>"><?php echo $hotContent['title'] ?></a></div>
                 </div>
             </div>
-            <div class="item fl ">
-                <div class="inner">
-                    <div class="pic"><a href="#"
-                                        title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress"><img class="delay"
-                                                                                                                 src="__PUBLIC__/site/{$Think.THEME_NAME}/images/d519b8878e.jpg.500x500.jpg"><span></span></a>
-                    </div>
-                    <div class="blank9"></div>
-                    <div class="name"><a href="#"
-                                         title="One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress">One Shoulder Sleeveless Ankle-length Satin Bridesmaid Dress</a></div>
-                </div>
-            </div>
-            <div class="item fl ">
-                <div class="inner">
-                    <div class="pic"><a href="#" title="A four-tiered white wedding cake"><img
-                                class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/b520299c6c.jpg.500x500.jpg"><span></span></a></div>
-                    <div class="blank9"></div>
-                    <div class="name"><a href="#" title="A four-tiered white wedding cake">A four-tiered
-                            white wedding cake</a></div>
-                </div>
-            </div>
-            <div class="item fl no_mar">
-                <div class="inner">
-                    <div class="pic"><a href="#" title="only flowers of Wedding Hairstyles"><img
-                                class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/36ee3f7241.jpg.500x500.jpg"><span></span></a></div>
-                    <div class="blank9"></div>
-                    <div class="name"><a href="#" title="only flowers of Wedding Hairstyles">only flowers
-                            of Wedding Hairstyles</a></div>
-                </div>
-            </div>
+            <?php } ?>
             <div class="clear"></div>
         </div>
         <div class="blank20"></div>
         <div id="icase">
-            <div class="item fl">
+            <?php foreach($tuijianContents as $idx=>$tuijianContent){ ?>
+            <div class="item <?php echo $idx==0?'fl':'fr' ?>">
                 <div class="cpic">
-                    <div class="inner pic_box"><a href="#" title="Bridesmaid Dresses"><img
-                                src="__PUBLIC__/site/{$Think.THEME_NAME}/images/ea4db44b45.jpg.240x240.jpg"></a><em></em></div>
-                    <a href="#" title="Bridesmaid Dresses" class="frame"></a>
+                    <div class="inner pic_box"><a href="<?php echo $tuijianContent['link_url'] ?>" title="<?php echo $tuijianContent['title'] ?>"><img
+                                src="<?php echo $tuijianContent['main_img']['path'] ?>"></a><em></em></div>
+                    <a href="<?php echo $tuijianContent['link_url'] ?>" title="<?php echo $tuijianContent['title'] ?>" class="frame"></a>
                 </div>
                 <div class="text">
-                    <a href="#" title="Bridesmaid Dresses" class="t">Bridesmaid Dresses</a>
-                    <div class="d">A defined waist and full circle skirt flatter the figure in this woven dress. A deep-V neck in the front and back bring sophisticated allure to
-                        the youthful sil
+                    <a href="<?php echo $tuijianContent['link_url'] ?>" title="<?php echo $tuijianContent['title'] ?>" class="t"><?php echo $tuijianContent['title'] ?></a>
+                    <div class="d"><?php echo mb_substr($tuijianContent['intro'], 0, 150) ?>
                     </div>
                 </div>
             </div>
-            <div class="item fr">
-                <div class="cpic">
-                    <div class="inner pic_box"><a href=#"
-                                                  title="A Romantic Blush and Gold Party in Palm Springs"><img
-                                src="__PUBLIC__/site/{$Think.THEME_NAME}/images/3b5a8a4028.jpg.240x240.jpg"></a><em></em></div>
-                    <a href="#" title="A Romantic Blush and Gold Party in Palm Springs"
-                       class="frame"></a>
-                </div>
-                <div class="text">
-                    <a href="#" title="A Romantic Blush and Gold Party in Palm Springs"
-                       class="t">A Romantic Blush and Gold Party in Palm Springs</a>
-                    <div class="d">Julie Meyer and Robert "Max" Lavie first spotted one another on the popular dating app Tinder and, once they both swiped right and conducted a
-                        full background c
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>
