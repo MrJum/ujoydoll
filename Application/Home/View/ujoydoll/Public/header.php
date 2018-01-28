@@ -52,7 +52,7 @@
     <div class="w1160">
         <h1 class="logo fl pic_box">
             <a href="/">
-                <img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/d8e35dd791.png" alt="lywebsite"><em></em>
+                <img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/logo2.png" alt="lywebsite"><em></em>
             </a></h1>
         <div class="clear"></div>
     </div>

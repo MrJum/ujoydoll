@@ -1,7 +1,7 @@
 <!-- end of .wrap -->
 <div id="footer">
     <div id="ftop">
-        <div class="fl flogo"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/d8e35dd791.png" alt="lywebsite"></div>
+        <div class="fl flogo"><img src="__PUBLIC__/site/{$Think.THEME_NAME}/images/logo2.png" alt="lywebsite"></div>
         <div class="fl address">
             <div class="t">KEEP IN TOUCH</div>
             <div class="r">
