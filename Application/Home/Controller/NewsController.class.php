@@ -14,6 +14,7 @@ class NewsController extends BaseController {
         $this->assign('cur_category', $curCategory);
         $news = D("content")->where(['category_id' => $curCategory['id'], 'status' => 1])->order("topnum desc, `order`,`createtime` desc")->select();
         $this->assign('news', $this->makeArticlesCanDisplay($news, $curCategory));
+        $this->assign('subtitle', 'News');
         $this->display();
 
     }
@@ -23,6 +24,7 @@ class NewsController extends BaseController {
         $newDetail = D("content")->where(['pagecode' => $code, 'status' => 1])->find();
         $newDetail['content'] = htmlspecialchars_decode($newDetail['content']);
         $this->assign('new', $newDetail);
+        $this->assign('subtitle', $newDetail['title']);
         $this->display();
     }
 

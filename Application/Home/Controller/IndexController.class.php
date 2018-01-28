@@ -15,6 +15,7 @@ class IndexController extends BaseController {
         $aboutusContent = D("Content")->where(["category_id" => $aboutusCategoryId, 'status' => 1])->find();
         $aboutusContent['content'] = htmlspecialchars_decode($aboutusContent['content']);
         $this->assign('aboutus', $this->makeArticleCanDisplay($aboutusContent, $aboutusCategory));
+        $this->assign('subtitle', 'About us');
         $this->display("Aboutus:aboutus");
     }
 

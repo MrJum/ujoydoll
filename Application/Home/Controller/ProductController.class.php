@@ -26,6 +26,7 @@ class ProductController extends BaseController {
         $this->assign('total_count', $total);
         $this->assign('page_count', $pageCount);
         $this->assign('page_no', $pageno);
+        $this->assign('subtitle', 'Products');
     	$this->display();
     }
 
@@ -55,6 +56,7 @@ class ProductController extends BaseController {
         $this->assign('page_count', $pageCount);
         $this->assign('page_no', $pageno);
         $this->assign('keyword', $keyword);
+        $this->assign('subtitle', 'Search products');
         $this->display("Product:search");
     }
 
@@ -71,6 +73,7 @@ class ProductController extends BaseController {
         $this->assign('prev', $this->makeArticleCanDisplay($prevProduct, $category));
         $this->assign('cur_category', $category);
         $this->assign('attacs', $this->getProductAttacs($product['id']));
+        $this->assign('subtitle', $product['title']);
         $this->display();
     }
 

@@ -7,11 +7,10 @@
     <meta name="keywords" content="<?php echo $options->keywords ?>">
     <meta name="description" content="<?php echo $options->description ?>">
     <title>
-
-        <?php echo $options->siteName?>
-        <?php if(isset($subSiteTitle)){
-            echo " - ".$subSiteTitle;
+        <?php if(isset($subtitle)){
+            echo $subtitle.' - ';
         }?>
+        <?php echo $options->siteName?>
     </title>
     <link href="__PUBLIC__/site/{$Think.THEME_NAME}/css/global.css" rel="stylesheet" type="text/css">
     <link href="__PUBLIC__/site/{$Think.THEME_NAME}/css/themes.css" rel="stylesheet" type="text/css">
