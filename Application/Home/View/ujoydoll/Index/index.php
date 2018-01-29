@@ -93,8 +93,8 @@
     <div class="blank25"></div>
     <div class="wrap">
         <div id="ismall">
-            <a href="#" class="fl" style="overflow:hidden;"><img class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/e11bf2ca02.jpg"></a>
-            <a href="#" class="fr" style="overflow:hidden;"><img class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/a3bacad888.jpg"></a>
+            <a href="#" class="fl" style="overflow:hidden;"><img class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/banner01.png"></a>
+            <a href="#" class="fr" style="overflow:hidden;"><img class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/banner02.png"></a>
         </div>
         <div class="blank25"></div>
         <div class="product_list">
