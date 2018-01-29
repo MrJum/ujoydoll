@@ -92,9 +92,9 @@
     <div id="ititle">Featured</div>
     <div class="blank25"></div>
     <div class="wrap">
-        <div id="ismall">
+        <div id="ismall" style="padding-left: 0">
             <a href="#" class="fl" style="overflow:hidden;"><img class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/banner01.png"></a>
-            <a href="#" class="fr" style="overflow:hidden;"><img class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/banner02.png"></a>
+            <a href="#" class="fl" style="overflow:hidden;margin-left: 20px"><img class="delay" src="__PUBLIC__/site/{$Think.THEME_NAME}/images/banner02.png"></a>
         </div>
         <div class="blank25"></div>
         <div class="product_list">
