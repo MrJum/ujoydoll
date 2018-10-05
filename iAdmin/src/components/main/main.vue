@@ -13,7 +13,6 @@
       <Header class="header-con">
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
           <user :user-avator="userAvator"/>
-          <language @on-lang-change="setLocal" style="margin-right: 10px;" :lang="local"/>
           <fullscreen v-model="isFullscreen" style="margin-right: 10px;"/>
         </header-bar>
       </Header>
@@ -38,7 +37,6 @@ import HeaderBar from './components/header-bar'
 import TagsNav from './components/tags-nav'
 import User from './components/user'
 import Fullscreen from './components/fullscreen'
-import Language from './components/language'
 import { mapMutations, mapActions } from 'vuex'
 import { getNewTagList, getNextRoute, routeEqual } from '@/libs/util'
 import minLogo from '@/assets/images/logo-min.jpg'
@@ -49,7 +47,6 @@ export default {
   components: {
     SideMenu,
     HeaderBar,
-    Language,
     TagsNav,
     Fullscreen,
     User
@@ -152,27 +149,6 @@ export default {
     this.setBreadCrumb(this.$route)
     // 设置初始语言
     this.setLocal(this.$i18n.locale)
-    // 文档提示
-    this.$Notice.info({
-      title: '想快速上手，去看文档吧',
-      duration: 0,
-      render: (h) => {
-        return h('p', {
-          style: {
-            fontSize: '13px'
-          }
-        }, [
-          '点击',
-          h('a', {
-            attrs: {
-              href: 'https://lison16.github.io/iview-admin-doc/#/',
-              target: '_blank'
-            }
-          }, 'iview-admin2.0文档'),
-          '快速查看'
-        ])
-      }
-    })
   }
 }
 </script>
